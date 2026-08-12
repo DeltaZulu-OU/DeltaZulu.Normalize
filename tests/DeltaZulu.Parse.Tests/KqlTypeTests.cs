@@ -86,6 +86,42 @@ public class KqlTypeTests
     }
 
     [TestMethod]
+    public void DateIso_FormatDatetime_ProducesNativeDateTimeOffset()
+    {
+        var ctx = Load("""rule=:day %{"name":"d", "type":"date-iso", "format":"datetime"}%""");
+        var r = ctx.Parse("day 2024-01-15", out ParseResult result);
+
+        Assert.AreEqual(0, r);
+        Assert.IsTrue(result.TryGetKqlType("d", out var type));
+        Assert.AreEqual(KqlType.DateTime, type);
+        Assert.AreEqual(new DateTimeOffset(2024, 1, 15, 0, 0, 0, TimeSpan.Zero), result.GetValue("d")!.GetValue<DateTimeOffset>());
+    }
+
+    [TestMethod]
+    public void Duration_FormatTimespan_ProducesNativeTimeSpan()
+    {
+        var ctx = Load("""rule=:duration %{"name":"d", "type":"duration", "format":"timespan"}% bytes""");
+        var r = ctx.Parse("duration 37:59:42 bytes", out ParseResult result);
+
+        Assert.AreEqual(0, r);
+        Assert.IsTrue(result.TryGetKqlType("d", out var type));
+        Assert.AreEqual(KqlType.Timespan, type);
+        Assert.AreEqual(new TimeSpan(37, 59, 42), result.GetValue("d")!.GetValue<TimeSpan>());
+    }
+
+    [TestMethod]
+    public void KernelTimestamp_FormatTimespan_ProducesNativeTimeSpan()
+    {
+        var ctx = Load("""rule=:%{"name":"ts", "type":"kernel-timestamp", "format":"timespan"}% end""");
+        var r = ctx.Parse("[12345.123456] end", out ParseResult result);
+
+        Assert.AreEqual(0, r);
+        Assert.IsTrue(result.TryGetKqlType("ts", out var type));
+        Assert.AreEqual(KqlType.Timespan, type);
+        Assert.AreEqual(TimeSpan.FromSeconds(12345.123456), result.GetValue("ts")!.GetValue<TimeSpan>());
+    }
+
+    [TestMethod]
     [DataRow("rule=:%w:word%", "hello", "w", KqlType.String, DisplayName = "word -> String")]
     [DataRow("""rule=:n %num:number%""", "n 42", "num", KqlType.String, DisplayName = "number, default format -> String")]
     [DataRow("""rule=:n %{"name":"num", "type":"number", "format":"number"}%""", "n 42", "num", KqlType.Long, DisplayName = "number, format=number -> Long")]
@@ -93,6 +129,13 @@ public class KqlTypeTests
     [DataRow("""rule=:h %{"name":"val", "type":"hexnumber", "format":"number"}% t""", "h 0x1234 t", "val", KqlType.Long, DisplayName = "hexnumber, format=number -> Long")]
     [DataRow("rule=:%ts:date-rfc3164% %h:word%", "Oct 29 09:47:08 myhost", "ts", KqlType.String, DisplayName = "date-rfc3164, default format -> String")]
     [DataRow("""rule=:%{"name":"ts", "type":"date-rfc3164", "format":"timestamp-unix"}% %h:word%""", "Oct 29 09:47:08 myhost", "ts", KqlType.Long, DisplayName = "date-rfc3164, format=timestamp-unix -> Long")]
+    [DataRow("rule=:day %d:date-iso%", "day 2024-01-15", "d", KqlType.String, DisplayName = "date-iso, default format -> String")]
+    [DataRow("rule=:duration %d:duration% bytes", "duration 0:00:42 bytes", "d", KqlType.String, DisplayName = "duration, default format -> String")]
+    [DataRow("rule=:%t:time-24hr% %h:word%", "14:23:45 myhost", "t", KqlType.String, DisplayName = "time-24hr, default format -> String")]
+    [DataRow("""rule=:%{"name":"t", "type":"time-24hr", "format":"timespan"}% %h:word%""", "14:23:45 myhost", "t", KqlType.Timespan, DisplayName = "time-24hr, format=timespan -> Timespan")]
+    [DataRow("rule=:%t:time-12hr% %h:word%", "09:15:30 myhost", "t", KqlType.String, DisplayName = "time-12hr, default format -> String")]
+    [DataRow("""rule=:%{"name":"t", "type":"time-12hr", "format":"timespan"}% %h:word%""", "09:15:30 myhost", "t", KqlType.Timespan, DisplayName = "time-12hr, format=timespan -> Timespan")]
+    [DataRow("rule=:%ts:kernel-timestamp% end", "[12345.123456] end", "ts", KqlType.String, DisplayName = "kernel-timestamp, default format -> String")]
     [DataRow("""rule=:count is %{"name":"n", "type":"repeat", "parser": {"type":"number"}, "while": {"type":"literal", "text":","} }%""", "count is 1,2,3", "n", KqlType.Dynamic, DisplayName = "repeat -> Dynamic")]
     [DataRow("""rule=:data %fields:json%""", """data {"a": 1}""", "fields", KqlType.Dynamic, DisplayName = "json -> Dynamic")]
     public void MotifOutput_HasExpectedKqlType(string rulebase, string message, string fieldName, KqlType expected)

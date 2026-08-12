@@ -300,12 +300,20 @@ and running the real C library)
   to a single static type (e.g. `ipv4`/`word`/`string` → `String`,
   `json`/`cef`/`repeat` → `Dynamic`); `number`/`float`/`hexnumber` and
   `date-rfc3164`/`date-rfc5424` depend on their existing `format=` option
-  the same way `ExtractMode` does. A handful of motifs
-  (`date-iso`/`time-24hr`/`time-12hr`/`duration`/`kernel-timestamp`) are
-  semantically `DateTime`/`Timespan` but have no non-string emission mode
-  yet, so they currently report `String`; native emission for those is
-  tracked as follow-on work, not part of this addition. A user-defined
-  type (`type=@name:...`) defaults to `Dynamic` unless its pattern
+  the same way `ExtractMode` does. `date-iso`
+  (`format=datetime` → `KqlType.DateTime`) and
+  `time-24hr`/`time-12hr`/`duration`/`kernel-timestamp`
+  (`format=timespan` → `KqlType.Timespan`) gained their own `format=`
+  option for exactly this: the non-default value is a genuine
+  `DateTimeOffset`/`TimeSpan` CLR value (not a numeric encoding of one —
+  see `docs/adr/0002-kql-common-type-denominator.md`'s "same data type
+  contracts" discussion), which `System.Text.Json` serializes as
+  ISO-8601-ish text with no bespoke code. `date-rfc3164`/`date-rfc5424`'s
+  own `timestamp-unix[-ms]` modes are unchanged (still an epoch `long`) —
+  that's pre-existing engine behavior this addition deliberately didn't
+  touch, a known asymmetry flagged in the ADR rather than silently
+  reconciled. A user-defined type (`type=@name:...`) defaults to `Dynamic`
+  unless its pattern
   collapses to a single scalar via the existing ".." unwrap
   (`PdagWalker.CommitField`), in which case it reports that inner value's
   own type — the tag lives on `FieldValue` itself, so this falls out of

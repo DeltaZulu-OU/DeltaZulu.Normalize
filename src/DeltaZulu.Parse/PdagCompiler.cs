@@ -231,7 +231,8 @@ internal static class PdagCompiler
         /// </summary>
         private static ExtractMode ClassifyExtract(byte prsId, object? data) => ParserTable.IdToName(prsId) switch {
             /* value == matched substring, unconditionally */
-            "literal" or "whitespace" or "word" or "alpha" or "rest" or "kernel-timestamp" or "date-iso" or "time-24hr" or "time-12hr" or "duration" or "ipv4" or "ipv6" or "mac48" or "string-to" or "char-to" or "char-sep" => ExtractMode.RawSpan,
+            "literal" or "whitespace" or "word" or "alpha" or "rest" or "ipv4" or "ipv6" or "mac48"
+                or "string-to" or "char-to" or "char-sep" => ExtractMode.RawSpan,
             /* value == matched substring in the default string format only */
             "number" => ((NumberParsers.NumberData)data!).FmtMode == FormatMode.AsString
                             ? ExtractMode.RawSpan : ExtractMode.Deferred,
@@ -241,6 +242,8 @@ internal static class PdagCompiler
                             ? ExtractMode.RawSpan : ExtractMode.Deferred,
             "date-rfc3164" or "date-rfc5424" => ((DateTimeParsers.DateData)data!).FmtMode == FormatMode.AsString
                             ? ExtractMode.RawSpan : ExtractMode.Deferred,
+            "kernel-timestamp" or "date-iso" or "time-24hr" or "time-12hr" or "duration" =>
+                ((DateTimeParsers.NativeFormatData)data!).Native ? ExtractMode.Deferred : ExtractMode.RawSpan,
             /* matching is the expensive part; re-running it to extract
              * would cost more than eager extraction saves */
             "repeat" or "json" or "cee-syslog" or "cef" or "v2-iptables" or "name-value-list" or "checkpoint-lea" => ExtractMode.Eager,
@@ -263,11 +266,7 @@ internal static class PdagCompiler
         /// not here.
         /// </summary>
         private static KqlType ClassifyKqlType(byte prsId, object? data) => ParserTable.IdToName(prsId) switch {
-            /* always plain text today; several of these (date-iso, time-24hr,
-             * time-12hr, duration, kernel-timestamp) are semantically
-             * DateTime/Timespan but have no non-string emission mode yet */
-            "literal" or "whitespace" or "word" or "alpha" or "rest" or "kernel-timestamp"
-                or "date-iso" or "time-24hr" or "time-12hr" or "duration" or "ipv4" or "ipv6"
+            "literal" or "whitespace" or "word" or "alpha" or "rest" or "ipv4" or "ipv6"
                 or "mac48" or "string-to" or "char-to" or "char-sep" or "op-quoted-string"
                 or "quoted-string" or "string" => KqlType.String,
             "number" => ((NumberParsers.NumberData)data!).FmtMode == FormatMode.AsNumber
@@ -278,9 +277,15 @@ internal static class PdagCompiler
              * unchecked; values above long.MaxValue wrap to negative */
             "hexnumber" => ((NumberParsers.HexNumberData)data!).FmtMode == FormatMode.AsNumber
                             ? KqlType.Long : KqlType.String,
-            /* epoch long, not (yet) a native DateTime */
+            /* still an epoch long, not a native DateTime — unlike date-iso
+             * below, changing this would alter this motif's pre-existing,
+             * already-shipped "timestamp-unix[-ms]" behavior, which is out
+             * of scope here; see docs/adr/0002-kql-common-type-denominator.md */
             "date-rfc3164" or "date-rfc5424" => ((DateTimeParsers.DateData)data!).FmtMode is
                 FormatMode.AsTimestampUnix or FormatMode.AsTimestampUnixMs ? KqlType.Long : KqlType.String,
+            "date-iso" => ((DateTimeParsers.NativeFormatData)data!).Native ? KqlType.DateTime : KqlType.String,
+            "kernel-timestamp" or "time-24hr" or "time-12hr" or "duration" =>
+                ((DateTimeParsers.NativeFormatData)data!).Native ? KqlType.Timespan : KqlType.String,
             /* structured/array-producing motifs, and user-defined types by
              * default (see summary above) */
             "repeat" or "json" or "cee-syslog" or "cef" or "v2-iptables" or "name-value-list"

@@ -2,8 +2,9 @@
 
 ## Status
 
-Accepted (Phase 1 — field-level type metadata — implemented; see
-Consequences for what's deliberately not yet in scope).
+Accepted. Phase 1 (field-level type metadata) and Phase 2 (native scalar
+emission for the temporal motifs) are implemented; see Consequences for
+what's deliberately not yet in scope.
 
 ## Context
 
@@ -28,6 +29,18 @@ work below is a foundation `DeltaZulu.Parse` needs to expose regardless of
 when the semantic view layer itself gets built, not a renumbering of it.
 Whoever writes ADR-5 should treat the `KqlType` metadata described here as
 an input it consumes, not something it needs to invent.
+
+A downstream requirement sharpened the design while Phase 2 was underway:
+the parsed values feed `Tx.Kql` for filtering/enriching/projecting, and
+from there a MessagePack envelope, using "the same data type contracts" —
+i.e. the goal isn't just a `KqlType` *label* on a field, it's a value the
+`KqlType` label is actually true of, so neither consumer has to cast,
+parse, or convert. A `KqlType.Long` field backed by a real `long`, a
+`KqlType.DateTime` field backed by a real `DateTimeOffset`, and so on —
+not a `KqlType.DateTime` label on a value that's still secretly a Unix
+epoch number requiring a `todatetime()`-style conversion downstream. This
+governs every value-shape choice below and should govern Phase 3's as
+well.
 
 ## Decision
 
@@ -58,14 +71,31 @@ pipeline. The compiled-PDAG binary persistence format
 (`CompiledPdagBinary.cs`) version was bumped (1 → 2) to persist the new
 per-edge tag; a v1 binary cache must be recompiled.
 
-**Phase 2 (not yet done): native scalar emission for the still-string-only
+**Phase 2 (implemented): native scalar emission for the still-string-only
 temporal motifs.** `date-iso`, `time-24hr`, `time-12hr`, `duration`, and
-`kernel-timestamp` are semantically `DateTime`/`Timespan` but have no
-`format=`-style opt-out today, so Phase 1 conservatively tags them
-`String`. Extending the existing `format=` convention
-(`number`/`float`/`hexnumber`/`date-rfc3164`/`date-rfc5424` already have
-it) to these five motifs is real parser-behavior work with its own parity
-burden, deliberately kept out of this phase.
+`kernel-timestamp` were semantically `DateTime`/`Timespan` but had no
+`format=`-style opt-out, so Phase 1 conservatively tagged them `String`.
+Each gained a `Construct` function accepting `format="string"` (default,
+unchanged behavior) or a native keyword — `"datetime"` for `date-iso`,
+`"timespan"` for the other four — that produces a genuine
+`DateTimeOffset`/`TimeSpan` CLR value (UTC midnight of the parsed date;
+the parsed hour/minute/second as an elapsed duration), per the "same data
+type contracts" principle above: not an epoch/total-seconds `long`
+encoding of one. `System.Text.Json.Nodes.JsonValue.Create<T>` already
+supports both types with a zero-copy `GetValue<T>()` round trip and
+serializes them as ISO-8601-ish text (`"2024-01-15T00:00:00+00:00"`,
+`"01:30:00"`), so JSON/CLI output stays sensible with no bespoke
+serialization code. `date-rfc3164`/`date-rfc5424`'s existing
+`timestamp-unix[-ms]` modes are deliberately **not** changed to match —
+that's pre-existing, already-shipped engine behavior unrelated to this
+work, and changing it is a separate, larger decision than adding new
+opt-in capability to five previously-string-only motifs; the resulting
+inconsistency (those two report `KqlType.Long` for an epoch encoding,
+`date-iso` reports `KqlType.DateTime` for a native value) is a known,
+flagged gap, not an oversight. `PdagCompiler.ClassifyExtract`/
+`ClassifyKqlType` and `CompiledPdagBinary` (version bumped 2 → 3, since
+these five motifs now always carry non-null `Data`) were updated to
+match.
 
 **Phase 3 (not yet scoped): the actual `Tx.Kql`/transpiler-facing layer.**
 This is the `DeltaZulu.Normalize` project ADR-1 reserved. It needs to
@@ -78,14 +108,32 @@ rather than guessed at.
 
 ## Consequences
 
-- New public API surface: `KqlType` enum, `ParseResult.TryGetKqlType`.
-  Purely additive — no existing member changed shape or behavior.
+- New public API surface: `KqlType` enum, `ParseResult.TryGetKqlType`, and
+  five new rulebase `format=` values (`date-iso:format=datetime`,
+  `duration`/`time-24hr`/`time-12hr`/`kernel-timestamp:format=timespan`).
+  Purely additive — every motif's default (no `format=`) behavior is
+  byte-for-byte unchanged, so this doesn't affect this port's liblognorm
+  parity claims.
 - `docs/COMPARISON.md` gains a "New capability" entry (§3): json-c has no
-  concept of a KQL type, so this is a pure addition, not a deviation to
+  concept of a KQL type or of emitting a native `DateTimeOffset`/`TimeSpan`
+  into a JSON value, so this is a pure addition, not a deviation to
   reconcile against upstream.
 - Compiled-PDAG binary caches from before this change are incompatible
-  (version bump 1 → 2) and must be recompiled; this is the same cost any
-  `CompiledEdge` schema change would carry, not specific to this feature.
-- Phase 2 and Phase 3 are follow-on work, not implied to be done by
-  accepting this ADR. Phase 3 in particular needs the `Tx.Kql`/transpiler
-  contracts pinned down before it can be scoped, let alone implemented.
+  (version bumped 1 → 2 → 3 across Phase 1 and Phase 2) and must be
+  recompiled; this is the same cost any `CompiledEdge`/parser-`Data`
+  schema change would carry, not specific to this feature.
+- The `date-rfc3164`/`date-rfc5424` vs. `date-iso` inconsistency noted
+  under Phase 2 (epoch `long` vs. native `DateTimeOffset` for
+  conceptually the same "give me a real timestamp" request) is a known,
+  intentionally-deferred gap — revisiting `date-rfc3164`/`date-rfc5424`'s
+  existing `timestamp-unix[-ms]` modes to also support a native-value
+  option is reasonable future work, but is a change to pre-existing
+  shipped behavior and needs its own explicit sign-off, not something to
+  fold silently into this ADR.
+- Phase 3 is follow-on work, not implied to be done by accepting this
+  ADR. It needs the `Tx.Kql`/MessagePack envelope contracts pinned down
+  before it can be scoped, let alone implemented — the "same data type
+  contracts" principle above is necessary but not sufficient; the exact
+  shape (an in-process typed-row abstraction, per the current answer) and
+  its CLR-type mapping for `Dynamic` fields in particular still need
+  deciding.
