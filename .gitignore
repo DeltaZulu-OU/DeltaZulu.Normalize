@@ -381,3 +381,4 @@ FodyWeavers.xsd
 packages.lock.json
 !**/packages.lock.json
 /tests/DeltaZulu.Normalize.Tests/packages.lock.json
+/src/tools/LogNormalizer.Cli/Properties/launchSettings.json
