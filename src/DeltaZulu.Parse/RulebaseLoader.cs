@@ -682,9 +682,16 @@ internal static class RulebaseLoader
             }
 
             var c = text[pos++];
-            if (c == '\r' && pos < text.Length && text[pos] == '\n')
+            if (c == '\r')
             {
-                c = text[pos++]; /* CRLF line ending: fold to a single LF */
+                if (pos < text.Length && text[pos] == '\n')
+                {
+                    c = text[pos++]; /* CRLF line ending: fold to a single LF */
+                }
+                else
+                {
+                    c = '\n'; /* lone CR (old Mac line ending): also a line end */
+                }
             }
 
             if (c == '\n')
@@ -832,19 +839,13 @@ internal static class RulebaseLoader
             return 1;
         }
 
-        string text;
-        try
+        if (!TryReadRulebaseText(ctx, resolved, file, out var text))
         {
-            text = File.ReadAllText(resolved);
-        }
-        catch (IOException ex)
-        {
-            ctx.Error($"cannot open rulebase '{file}': {ex.Message}");
             return 1;
         }
 
-        var newlineIdx = text.IndexOf('\n');
-        var firstLine = (newlineIdx >= 0 ? text[..newlineIdx] : text).TrimEnd('\r');
+        var lineEnd = FindLineEnd(text, out var bodyStart);
+        var firstLine = lineEnd < 0 ? text : text[..lineEnd];
         if (firstLine != "version=2")
         {
             ctx.Error($"rulebase '{file}' must be version 2 " +
@@ -853,9 +854,109 @@ internal static class RulebaseLoader
         }
 
         ctx.ConfLineNumber++; /* "version=2" is line 1 */
-        var body = newlineIdx >= 0 ? text[(newlineIdx + 1)..] : string.Empty;
+        var body = lineEnd < 0 ? string.Empty : text[bodyStart..];
         return RunLoad(ctx, body, checkRunaway: true);
     }
+
+    /// <summary>
+    /// Locate the end of the first logical line, recognizing all three
+    /// newline conventions (LF, CRLF, and lone CR — the last one being what
+    /// "old Mac" text editors and some log-management exports still produce)
+    /// so that a rulebase's mandatory "version=2" header is found regardless
+    /// of which one the file uses. Returns -1 (with <paramref name="nextLineStart"/>
+    /// set to the text length) when the text has no line ending at all.
+    /// </summary>
+    private static int FindLineEnd(string text, out int nextLineStart)
+    {
+        for (var i = 0; i < text.Length; i++)
+        {
+            switch (text[i])
+            {
+                case '\n':
+                    nextLineStart = i + 1;
+                    return i;
+                case '\r':
+                    nextLineStart = i + 1 < text.Length && text[i + 1] == '\n' ? i + 2 : i + 1;
+                    return i;
+            }
+        }
+
+        nextLineStart = text.Length;
+        return -1;
+    }
+
+    /// <summary>
+    /// Read a rulebase file's text, validating its encoding rather than
+    /// silently guessing at it. A byte-order mark selects UTF-8/UTF-16/UTF-32
+    /// decoding explicitly; otherwise the bytes must be well-formed UTF-8.
+    /// Plain <see cref="File.ReadAllText(string)"/> would instead fall back
+    /// to substituting U+FFFD for any byte sequence it can't decode (e.g. a
+    /// file saved in a legacy single-byte code page, or truncated/corrupted
+    /// multi-byte sequences) — silently turning literal rule text into
+    /// something no real message can ever match, with no error reported
+    /// anywhere. That failure mode is indistinguishable, from the caller's
+    /// side, from a rulebase that is simply wrong; validating up front turns
+    /// it into a clear, actionable load error instead.
+    /// </summary>
+    private static bool TryReadRulebaseText(ParseContext ctx, string path, string displayName, out string text)
+    {
+        byte[] bytes;
+        try
+        {
+            bytes = File.ReadAllBytes(path);
+        }
+        catch (IOException ex)
+        {
+            ctx.Error($"cannot open rulebase '{displayName}': {ex.Message}");
+            text = string.Empty;
+            return false;
+        }
+
+        var bomSpan = bytes.AsSpan();
+        if (bomSpan.StartsWith(Utf32LeBom))
+        {
+            text = new UTF32Encoding(bigEndian: false, byteOrderMark: false).GetString(bytes, 4, bytes.Length - 4);
+            return true;
+        }
+        if (bomSpan.StartsWith(Utf32BeBom))
+        {
+            text = new UTF32Encoding(bigEndian: true, byteOrderMark: false).GetString(bytes, 4, bytes.Length - 4);
+            return true;
+        }
+        if (bomSpan.StartsWith(Utf16LeBom))
+        {
+            text = Encoding.Unicode.GetString(bytes, 2, bytes.Length - 2);
+            return true;
+        }
+        if (bomSpan.StartsWith(Utf16BeBom))
+        {
+            text = Encoding.BigEndianUnicode.GetString(bytes, 2, bytes.Length - 2);
+            return true;
+        }
+
+        var utf8Start = bomSpan.StartsWith(Utf8Bom) ? 3 : 0;
+        try
+        {
+            text = StrictUtf8.GetString(bytes, utf8Start, bytes.Length - utf8Start);
+            return true;
+        }
+        catch (DecoderFallbackException ex)
+        {
+            ctx.Error($"rulebase '{displayName}' is not valid UTF-8 (invalid byte sequence at offset " +
+                      $"{utf8Start + ex.Index}); re-save the file as UTF-8, or with a UTF-16/UTF-32 byte-order mark");
+            text = string.Empty;
+            return false;
+        }
+    }
+
+    private static readonly byte[] Utf8Bom = [0xEF, 0xBB, 0xBF];
+    private static readonly byte[] Utf16BeBom = [0xFE, 0xFF];
+    private static readonly byte[] Utf16LeBom = [0xFF, 0xFE];
+    private static readonly byte[] Utf32BeBom = [0x00, 0x00, 0xFE, 0xFF];
+    private static readonly byte[] Utf32LeBom = [0xFF, 0xFE, 0x00, 0x00];
+
+    /// <summary>UTF-8 decoder that throws instead of substituting U+FFFD on invalid byte sequences.</summary>
+    private static readonly UTF8Encoding StrictUtf8 = new(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
     /* ---------- line dispatch ---------- */
     /* ---------- rule / type ---------- */
