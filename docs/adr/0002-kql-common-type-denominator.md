@@ -2,9 +2,10 @@
 
 ## Status
 
-Accepted. Phase 1 (field-level type metadata) and Phase 2 (native scalar
-emission for the temporal motifs) are implemented; see Consequences for
-what's deliberately not yet in scope.
+Accepted. Phase 1 (field-level type metadata), Phase 2 (native scalar
+emission for the temporal motifs), and a first slice of Phase 3 (the
+`DeltaZulu.Normalize` typed-row projection) are implemented; see
+Consequences for what's deliberately not yet in scope.
 
 ## Context
 
@@ -97,14 +98,36 @@ flagged gap, not an oversight. `PdagCompiler.ClassifyExtract`/
 these five motifs now always carry non-null `Data`) were updated to
 match.
 
-**Phase 3 (not yet scoped): the actual `Tx.Kql`/transpiler-facing layer.**
-This is the `DeltaZulu.Normalize` project ADR-1 reserved. It needs to
-consume `ParseResult` + Phase 1's `KqlType` tags + a schema mapping (which
-rule/tag maps to which target table/column names) and produce whatever
-`Tx.Kql` and the central transpiler actually need — most likely a typed
-row abstraction. This repo has no visibility into either contract, so
-Phase 3 is intentionally left unscoped until that input is available,
-rather than guessed at.
+**Phase 3 (first slice implemented): the `DeltaZulu.Normalize` typed-row
+projection.** Scaffolded the `DeltaZulu.Normalize` project ADR-1 reserved,
+as its own assembly referencing only `DeltaZulu.Parse` (not yet packaged
+for NuGet). `RecordNormalizer.Normalize(ParseResult)` walks every
+committed field (`ParseResult.Count`/`GetName`/`TryGetKqlType`/`GetValue`/
+`TryGetRawText` — the library's existing public surface; no new internals
+access needed) and produces a `NormalizedRecord`: an ordered
+`IReadOnlyList<NormalizedField>` where each `NormalizedField(Name, Type,
+Value)`'s `Value` is already the native CLR type `Type` promises (`long`,
+`double`, `bool`, `string`, `DateTimeOffset`, `TimeSpan`, `Guid`,
+`decimal`, `int` — the `KqlType.Guid`/`Decimal`/`Int` branches exist for
+completeness though no motif emits them yet), materialized via
+`JsonNode.GetValue<T>()` (a zero-copy read-back, not a parse, since the
+underlying value was already constructed as that exact type — see Phase
+1/2 above) with a `TryGetRawText`-first fast path for `String` fields.
+`KqlType.Dynamic` (and the defensive `Unknown` fallback) fields are
+converted into a plain `Dictionary<string, object?>`/`List<object?>`/
+primitive object graph rather than exposed as a `JsonNode`, so a generic
+MessagePack resolver — or any other serializer — can walk them with no
+`System.Text.Json` dependency and no custom formatter, per this ADR's
+"same data type contracts" requirement.
+
+This is a first slice, not the finished layer: it answers "what's an
+in-process typed row" but not the two questions that need the actual
+`Tx.Kql`/MessagePack-envelope integration in hand to answer correctly —
+a rule/tag → target-table/column-name schema mapping (right now a
+`NormalizedRecord`'s columns are exactly the parsed field names, with no
+renaming/routing), and whatever `Tx.Kql`-specific interface (beyond a
+plain `IReadOnlyList<NormalizedField>`) its filtering/enriching/
+projecting actually wants to consume.
 
 ## Consequences
 
@@ -130,10 +153,15 @@ rather than guessed at.
   option is reasonable future work, but is a change to pre-existing
   shipped behavior and needs its own explicit sign-off, not something to
   fold silently into this ADR.
-- Phase 3 is follow-on work, not implied to be done by accepting this
-  ADR. It needs the `Tx.Kql`/MessagePack envelope contracts pinned down
-  before it can be scoped, let alone implemented — the "same data type
-  contracts" principle above is necessary but not sufficient; the exact
-  shape (an in-process typed-row abstraction, per the current answer) and
-  its CLR-type mapping for `Dynamic` fields in particular still need
-  deciding.
+- New project/package surface: `DeltaZulu.Normalize` (`NormalizedField`,
+  `NormalizedRecord`, `RecordNormalizer`), `tests/DeltaZulu.Normalize.Tests/`,
+  both added to `DeltaZulu.Parse.slnx`. `docs/COMPARISON.md` is
+  deliberately not touched by this — that document's whole scope is a
+  comparison against upstream liblognorm's v2 engine, and
+  `DeltaZulu.Normalize` has no liblognorm/json-c analog at all to compare
+  against (see ADR-1: "normalize" was reserved for exactly this,
+  non-comparable layer).
+- Phase 3 beyond this first slice is still follow-on work: the schema
+  mapping (rule/tag → target table/column) and the exact `Tx.Kql`-facing
+  interface both need the real integration in hand to get right, not
+  guessed at from this repo alone.

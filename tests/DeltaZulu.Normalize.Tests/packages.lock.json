@@ -102,6 +102,12 @@
         "contentHash": "GNvrVI6/Y5pNoKnK1/VELBls3XiHNZaj+zh14LtwlCqFI8zXTW3vuBe0Jv2qEr9wxHlOAQQBTJPRoNRjneGrKQ=="
       },
       "deltazulu.normalize": {
+        "type": "Project",
+        "dependencies": {
+          "DeltaZulu.Parse": "[0.1.0, )"
+        }
+      },
+      "deltazulu.parse": {
         "type": "Project"
       }
     }
