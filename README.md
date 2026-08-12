@@ -8,6 +8,12 @@ A C# port of `liblognorm` v2's PDAG-based log normalization engine, targeting .N
 This is a **direct port of the v2 engine only**:
 
 - The v2 rulebase syntax (`version=2` header; `rule=`, `type=`, `prefix=`,   `extendprefix=`, `annotate=`, `include=` lines; legacy, condensed and full JSON field syntax) and its 30 built-in motif parsers.
+
+> **v1 rulebases are not v2 rulebases with a header added.** The “legacy” or
+> “condensed” field notation supported here refers to forms such as
+> `%name:type%` *inside a v2 rulebase*; it does not restore v1-only motif
+> parsers. In particular, migrate the v1 `%name:iptables%` motif to the v2
+> name `%name:v2-iptables%` as well as adding the `version=2` header.
 - The PDAG construction, optimization (priority sort + literal path compaction) and recursive-with-backtracking walker.
 - Rule tags and `annotate=` static-field annotations.
 

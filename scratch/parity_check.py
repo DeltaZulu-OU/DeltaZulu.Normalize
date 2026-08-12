@@ -2,8 +2,10 @@
 """
 Parity harness for the C lognormalizer and the C# port.
 
-The harness parses add_rule/execute pairs from the C project's tests/*.sh
+The harness parses add_rule/execute pairs from the C project's v2 tests/*.sh
 fixtures. The shell files are treated as a loose DSL and are never executed.
+Only cases whose accumulated main rulebase contains a ``version=2`` line are
+run; v1 syntax is not made v2-compatible merely by prepending that header.
 Each runnable case is replayed against both implementations, and their JSON
 outputs are compared semantically.
 
@@ -145,7 +147,7 @@ class DiscoveryStats:
     skipped_without_rules: int = 0
     skipped_execute_with_string: int = 0
     skipped_without_rulebase: int = 0
-    skipped_without_version: int = 0
+    skipped_without_v2_version: int = 0
 
 
 @dataclass(frozen=True)
@@ -420,8 +422,8 @@ def discover_cases(
             if not main_rulebase_lines:
                 stats.skipped_without_rulebase += 1
                 continue
-            if not any(line.lstrip().startswith("version=") for line in main_rulebase_lines):
-                stats.skipped_without_version += 1
+            if not any(line.strip() == "version=2" for line in main_rulebase_lines):
+                stats.skipped_without_v2_version += 1
                 continue
 
             fixture_case_number += 1
@@ -609,7 +611,7 @@ def print_discovery(stats: DiscoveryStats, case_count: int) -> None:
     print(f"  skipped without add_rule:     {stats.skipped_without_rules}", file=sys.stderr)
     print(f"  skipped execute_with_string:  {stats.skipped_execute_with_string}", file=sys.stderr)
     print(f"  skipped without rulebase:     {stats.skipped_without_rulebase}", file=sys.stderr)
-    print(f"  skipped without version:      {stats.skipped_without_version}", file=sys.stderr)
+    print(f"  skipped without version=2:    {stats.skipped_without_v2_version}", file=sys.stderr)
     print(f"  runnable execute cases:       {case_count}", file=sys.stderr)
     print(file=sys.stderr)
 
