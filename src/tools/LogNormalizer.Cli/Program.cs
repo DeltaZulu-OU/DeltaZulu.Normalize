@@ -13,6 +13,7 @@ string? singleMessage = null;
 var addOriginalMsg = false;
 var addRule = false;
 var includeEventTags = false;
+var decodeSyslog = false;
 
 for (var i = 0; i < args.Length; i++)
 {
@@ -68,6 +69,10 @@ for (var i = 0; i < args.Length; i++)
 
         case "-T":
             includeEventTags = true;
+            break;
+
+        case "--syslog":
+            decodeSyslog = true;
             break;
 
         case "-h":
@@ -142,21 +147,31 @@ if (exportBinaryPath != null)
 
 if (singleMessage != null)
 {
-    ParseAndPrint(ctx, singleMessage, includeEventTags, jsonOptions);
+    ParseAndPrint(ctx, singleMessage, includeEventTags, decodeSyslog, jsonOptions);
     return 0;
 }
 
 string? line;
 while ((line = Console.In.ReadLine()) != null)
 {
-    ParseAndPrint(ctx, line, includeEventTags, jsonOptions);
+    ParseAndPrint(ctx, line, includeEventTags, decodeSyslog, jsonOptions);
 }
 
 return 0;
 
-static void ParseAndPrint(ParseContext ctx, string message, bool includeEventTags, JsonSerializerOptions jsonOptions)
+static void ParseAndPrint(ParseContext ctx, string message, bool includeEventTags, bool decodeSyslog, JsonSerializerOptions jsonOptions)
 {
-    ctx.Parse(message, out JsonObject json);
+    /* a syslog envelope (RFC 3164/5424) is transport framing, not part of
+     * the rulebase's grammar -- strip it before Parse ever sees the line,
+     * same as rsyslog's own parser modules do before handing $msg to
+     * mmnormalize. See docs/adr/0006-syslog-envelope-predecoder.md. */
+    var toParse = message;
+    if (decodeSyslog && SyslogDecoder.TryDecode(message, out var envelope))
+    {
+        toParse = envelope.Msg;
+    }
+
+    ctx.Parse(toParse, out JsonObject json);
     if (!includeEventTags)
     {
         json.Remove("event.tags");
@@ -168,7 +183,7 @@ static void ParseAndPrint(ParseContext ctx, string message, bool includeEventTag
 static void PrintUsage()
 {
     Console.Error.WriteLine("""
-        usage: lognormalizer (-r <rulebase-file-or-dir> | --import-binary <compiled-pdag-file>) [--export-binary <compiled-pdag-file>] [-m <message>] [-O] [--add-rule] [-T]
+        usage: lognormalizer (-r <rulebase-file-or-dir> | --import-binary <compiled-pdag-file>) [--export-binary <compiled-pdag-file>] [-m <message>] [-O] [--add-rule] [-T] [--syslog]
 
           -r <path>    v2 rulebase file to load, or a directory whose rulebase
                        files are all loaded (recursively) into one combined
@@ -184,6 +199,11 @@ static void PrintUsage()
           --add-rule   add a mock-up of the matching rule to the output metadata
           -T           include the internal 'event.tags' field in the JSON output
                        (stripped by default, matching the reference CLI)
+          --syslog     strip an RFC 3164/5424 syslog envelope (timestamp, host,
+                       tag/app-name) off each line before parsing, so raw
+                       captures can be fed straight in instead of requiring a
+                       real syslog receiver or manual preprocessing first. A
+                       line with no recognizable envelope is parsed unchanged.
 
         Without -m, messages are read one per line from stdin and one JSON
         object is printed per line to stdout.
