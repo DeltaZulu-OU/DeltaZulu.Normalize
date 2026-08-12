@@ -421,8 +421,7 @@ python3 scratch/parity_check.py
 The harness prints per-fixture-file discovery counts (files found, selected,
 and skipped by category — filename policy, no `add_rule`, no rulebase,
 missing `version=`), then one `PASS`/`FAIL` line per runnable case, and a
-summary. As of the last recorded run against upstream `main`, all discovered
-cases passed:
+summary. The current recorded run against upstream fixtures is:
 
 ```text
 Parity summary
@@ -432,10 +431,13 @@ Parity summary
   mismatches:           0
   unparseable outputs:  0
   execution errors:     0
+  elapsed:              31.386s
 ```
 
-A mismatch or execution error here means either a real behavioral
-regression or a new, previously-unseen C-vs-C# divergence worth adding to
-the sections above — re-run the harness after any change to a motif parser,
-the rulebase loader, or the PDAG walker, and treat any new `FAIL` as the
-starting point for a §1–§4 write-up, not just a number to fix.
+KQL type metadata has no json-c/liblognorm equivalent, but it does not change
+the CLI JSON produced by these discovered fixtures. A mismatch or execution
+error therefore means either a behavioral regression or a new, previously
+unseen C-vs-C# divergence worth adding to the sections above. Re-run the
+harness after any change to a motif parser, the rulebase loader, or the PDAG
+walker, and treat a new failure as the starting point for a §1–§4 write-up
+rather than a baseline number to suppress.

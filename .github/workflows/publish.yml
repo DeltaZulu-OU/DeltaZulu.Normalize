@@ -1,9 +1,6 @@
 name: Publish NuGet package
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
   workflow_dispatch:
 
 permissions:
@@ -27,29 +24,35 @@ jobs:
           dotnet-version: 10.0.x
 
       - id: version
-        name: Resolve package version
+        name: Read package version from Directory.Build.props
         shell: bash
         run: |
           set -euo pipefail
-          source_version="$(dotnet msbuild src/DeltaZulu.Parse/DeltaZulu.Parse.csproj -getProperty:Version -nologo | tail -n 1)"
-          if ! [[ "$source_version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z]+([.-][0-9A-Za-z]+)*)?$ ]]; then
-            echo "Version '$source_version' is not a supported SemVer package version." >&2
+          package_version="$(python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+
+          root = ET.parse("Directory.Build.props").getroot()
+          versions = [
+              element.text.strip()
+              for element in root.iter("Version")
+              if element.text and element.text.strip()
+          ]
+          if len(versions) != 1:
+              raise SystemExit(
+                  "Directory.Build.props must contain exactly one non-empty Version element"
+              )
+          print(versions[0])
+          PY
+          )"
+          if ! [[ "$package_version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z]+([.-][0-9A-Za-z]+)*)?$ ]]; then
+            echo "Version '$package_version' in Directory.Build.props is not a supported SemVer package version." >&2
             exit 1
           fi
 
-          if [[ "${{ github.event_name }}" == "push" ]]; then
-            tag_version="${GITHUB_REF_NAME#v}"
-            if [[ "$tag_version" != "$source_version" ]]; then
-              echo "Tag version '$tag_version' does not match source version '$source_version'." >&2
-              exit 1
-            fi
-          fi
+          echo "package_version=$package_version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$package_version" >> "$GITHUB_OUTPUT"
 
-          echo "package_version=$source_version" >> "$GITHUB_OUTPUT"
-          echo "tag=v$source_version" >> "$GITHUB_OUTPUT"
-
-      - name: Create release tag for manual dispatch
-        if: github.event_name == 'workflow_dispatch'
+      - name: Create release tag
         env:
           RELEASE_TAG: ${{ steps.version.outputs.tag }}
         shell: bash
