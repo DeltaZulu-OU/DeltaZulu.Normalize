@@ -52,7 +52,7 @@ internal sealed class AnnotationSet
             for (var j = annot.Ops.Count - 1; j >= 0; --j)
             {
                 (var name, var value) = annot.Ops[j];
-                fields.Set(name, FieldValue.Node(JsonValue.Create(value)));
+                fields.Set(name, FieldValue.Node(JsonValue.Create(value), KqlType.String));
             }
         }
     }

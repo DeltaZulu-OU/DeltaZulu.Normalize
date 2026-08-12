@@ -288,6 +288,28 @@ and running the real C library)
   special-name semantics ("." splice including the mid-splice duplicate
   abort, single-".." unwrap, unnamed-field drop) are ported onto the
   collector unchanged.
+- **`KqlType` field metadata.** Every extracted field is tagged with a KQL
+  (Kusto Query Language) scalar type (`KqlType.cs`), decided at compile
+  time from the matching motif and its configuration (mirroring the
+  `Extract`/`ExtractMode` classification `PdagCompiler.ClassifyExtract`
+  already does from the same inputs) and exposed via
+  `ParseResult.TryGetKqlType`. json-c/liblognorm has no concept of a field
+  having a KQL type — this exists so parsed output can be consumed as
+  KQL-typed data (locally via Tx.Kql, centrally via a transpiler) without
+  a downstream consumer re-inferring types from raw JSON. Most motifs map
+  to a single static type (e.g. `ipv4`/`word`/`string` → `String`,
+  `json`/`cef`/`repeat` → `Dynamic`); `number`/`float`/`hexnumber` and
+  `date-rfc3164`/`date-rfc5424` depend on their existing `format=` option
+  the same way `ExtractMode` does. A handful of motifs
+  (`date-iso`/`time-24hr`/`time-12hr`/`duration`/`kernel-timestamp`) are
+  semantically `DateTime`/`Timespan` but have no non-string emission mode
+  yet, so they currently report `String`; native emission for those is
+  tracked as follow-on work, not part of this addition. A user-defined
+  type (`type=@name:...`) defaults to `Dynamic` unless its pattern
+  collapses to a single scalar via the existing ".." unwrap
+  (`PdagWalker.CommitField`), in which case it reports that inner value's
+  own type — the tag lives on `FieldValue` itself, so this falls out of
+  the existing unwrap/splice logic without any special-casing.
 
 ## 4. API, error codes, `annotate=`, CLI, and test-suite breadth
 

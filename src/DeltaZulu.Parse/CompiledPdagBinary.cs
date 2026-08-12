@@ -8,7 +8,9 @@ namespace DeltaZulu.Parse;
 internal static class CompiledPdagBinary
 {
     private const uint Magic = 0x47414450; // PDAG, little-endian
-    private const ushort Version = 1;
+
+    /// <summary>Bumped to 2 when <see cref="CompiledEdge.KqlType"/> was added.</summary>
+    private const ushort Version = 2;
 
     public static void Write(CompiledPdag snap, Stream stream)
     {
@@ -27,7 +29,7 @@ internal static class CompiledPdagBinary
         foreach (var e in snap.Edges)
         {
             w.Write(e.PrsId); w.Write(e.LiteralFirstChar); w.Write(e.TargetNode); w.Write(e.CustomTypeIdx);
-            w.Write((byte)e.Extract); w.Write(e.Name != null); if (e.Name != null) w.Write(e.Name);
+            w.Write((byte)e.Extract); w.Write((byte)e.KqlType); w.Write(e.Name != null); if (e.Name != null) w.Write(e.Name);
             WriteData(w, e.PrsId, e.Data);
         }
         foreach (var t in snap.Terminals)
@@ -54,9 +56,10 @@ internal static class CompiledPdagBinary
         for (var i = 0; i < edges.Length; i++)
         {
             var prsId = r.ReadByte(); var first = r.ReadChar(); var target = r.ReadInt32(); var custom = r.ReadInt32();
-            var extract = (ExtractMode)r.ReadByte(); var name = r.ReadBoolean() ? r.ReadString() : null;
+            var extract = (ExtractMode)r.ReadByte(); var kqlType = (KqlType)r.ReadByte();
+            var name = r.ReadBoolean() ? r.ReadString() : null;
             var data = ReadData(r, prsId);
-            edges[i] = new CompiledEdge(prsId, first, target, custom, data, name, extract);
+            edges[i] = new CompiledEdge(prsId, first, target, custom, data, name, extract, kqlType);
         }
         for (var i = 0; i < terminals.Length; i++)
         {

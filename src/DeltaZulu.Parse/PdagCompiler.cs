@@ -216,7 +216,8 @@ internal static class PdagCompiler
                     }
                 }
                 tmp.Edges.Add(new CompiledEdge(prs.PrsId, firstChar, targetIdx,
-                    prs.CustomTypeIndex, data, prs.Name, ClassifyExtract(prs.PrsId, data)));
+                    prs.CustomTypeIndex, data, prs.Name, ClassifyExtract(prs.PrsId, data),
+                    ClassifyKqlType(prs.PrsId, data)));
             }
             return idx;
         }
@@ -246,6 +247,45 @@ internal static class PdagCompiler
             /* derived values (stripped quotes, unescaping, sub-objects):
              * re-run the cheap parse on the success unwind */
             _ => ExtractMode.Deferred,
+        };
+
+        /// <summary>
+        /// Pick the KQL scalar type an edge's value corresponds to, from the
+        /// same (parser type, configuration) inputs <see cref="ClassifyExtract"/>
+        /// uses. This has no upstream liblognorm equivalent — see
+        /// docs/COMPARISON.md. Motifs that always produce structured
+        /// (object/array) output map to Dynamic; user-defined types
+        /// ("USER-DEFINED", the <see cref="ParserTable.IdToName"/> name for
+        /// <see cref="ParserTable.CustomTypeId"/>) default to Dynamic too —
+        /// a type whose pattern collapses to a single scalar via the ".."
+        /// unwrap reports that inner scalar's own type instead, but that
+        /// happens per-value at commit time (<c>PdagWalker.CommitField</c>),
+        /// not here.
+        /// </summary>
+        private static KqlType ClassifyKqlType(byte prsId, object? data) => ParserTable.IdToName(prsId) switch {
+            /* always plain text today; several of these (date-iso, time-24hr,
+             * time-12hr, duration, kernel-timestamp) are semantically
+             * DateTime/Timespan but have no non-string emission mode yet */
+            "literal" or "whitespace" or "word" or "alpha" or "rest" or "kernel-timestamp"
+                or "date-iso" or "time-24hr" or "time-12hr" or "duration" or "ipv4" or "ipv6"
+                or "mac48" or "string-to" or "char-to" or "char-sep" or "op-quoted-string"
+                or "quoted-string" or "string" => KqlType.String,
+            "number" => ((NumberParsers.NumberData)data!).FmtMode == FormatMode.AsNumber
+                            ? KqlType.Long : KqlType.String,
+            "float" => ((NumberParsers.FloatData)data!).FmtMode == FormatMode.AsNumber
+                            ? KqlType.Real : KqlType.String,
+            /* NumberParsers.ParseHexNumber casts the parsed ulong to long
+             * unchecked; values above long.MaxValue wrap to negative */
+            "hexnumber" => ((NumberParsers.HexNumberData)data!).FmtMode == FormatMode.AsNumber
+                            ? KqlType.Long : KqlType.String,
+            /* epoch long, not (yet) a native DateTime */
+            "date-rfc3164" or "date-rfc5424" => ((DateTimeParsers.DateData)data!).FmtMode is
+                FormatMode.AsTimestampUnix or FormatMode.AsTimestampUnixMs ? KqlType.Long : KqlType.String,
+            /* structured/array-producing motifs, and user-defined types by
+             * default (see summary above) */
+            "repeat" or "json" or "cee-syslog" or "cef" or "v2-iptables" or "name-value-list"
+                or "checkpoint-lea" or "cisco-interface-spec" or "USER-DEFINED" => KqlType.Dynamic,
+            _ => KqlType.Dynamic,
         };
 
         private sealed class TempNode

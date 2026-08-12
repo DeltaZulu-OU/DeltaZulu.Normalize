@@ -94,6 +94,25 @@ public sealed class ParseResult
         return false;
     }
 
+    /// <summary>
+    /// Get a field's KQL scalar type (see <see cref="Parse.KqlType"/>), for
+    /// consumers that need KQL-typed output (e.g. local querying via Tx.Kql,
+    /// or a central transpiler) rather than raw JSON. Returns false for
+    /// absent fields.
+    /// </summary>
+    public bool TryGetKqlType(string name, out KqlType type)
+    {
+        var i = _fields.IndexOf(name);
+        if (i >= 0)
+        {
+            type = _fields.ValueAt(i).KqlType;
+            return true;
+        }
+
+        type = KqlType.Unknown;
+        return false;
+    }
+
     /// <summary>Serialize the result, writing slice-backed values straight from the input message.</summary>
     public void WriteTo(Utf8JsonWriter writer)
     {
