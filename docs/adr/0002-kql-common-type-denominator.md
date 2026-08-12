@@ -5,7 +5,11 @@
 Accepted. Phase 1 (field-level type metadata), Phase 2 (native scalar
 emission for the temporal motifs), and a first slice of Phase 3 (the
 `DeltaZulu.Normalize` typed-row projection) are implemented; see
-Consequences for what's deliberately not yet in scope.
+Consequences for what's deliberately not yet in scope. Phase 3's framing
+of schema mapping as open Phase-3 work is superseded by ADR-4
+(`docs/adr/0004-normalizedrecord-column-names-are-final.md`); this ADR's
+Decision/Consequences text below is left as originally written, per this
+project's immutable-ADR convention.
 
 ## Context
 
