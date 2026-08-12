@@ -13,6 +13,25 @@ internal static class DateTimeParsers
     public static int ConstructRfc5424(ParseContext ctx, JsonObject config, out object? pdata)
             => ConstructDate(ctx, config, "date-rfc5424", out pdata);
 
+    /// <summary>"string" (default) or "datetime" — a native <see cref="DateTimeOffset"/>
+    /// (UTC midnight of that date), not a numeric encoding of one.</summary>
+    public static int ConstructIsoDate(ParseContext ctx, JsonObject config, out object? pdata)
+            => ConstructNativeFormat(ctx, config, "date-iso", "datetime", out pdata);
+
+    /// <summary>"string" (default) or "timespan" — a native <see cref="TimeSpan"/>,
+    /// not a numeric encoding of one.</summary>
+    public static int ConstructDuration(ParseContext ctx, JsonObject config, out object? pdata)
+            => ConstructNativeFormat(ctx, config, "duration", "timespan", out pdata);
+
+    public static int ConstructKernelTimestamp(ParseContext ctx, JsonObject config, out object? pdata)
+            => ConstructNativeFormat(ctx, config, "kernel-timestamp", "timespan", out pdata);
+
+    public static int ConstructTime12hr(ParseContext ctx, JsonObject config, out object? pdata)
+            => ConstructNativeFormat(ctx, config, "time-12hr", "timespan", out pdata);
+
+    public static int ConstructTime24hr(ParseContext ctx, JsonObject config, out object? pdata)
+            => ConstructNativeFormat(ctx, config, "time-24hr", "timespan", out pdata);
+
     /// <summary>A duration: (H)H+:MM:SS, where hours may exceed 23.</summary>
     public static int ParseDuration(Npb npb, ref int offs, object? pdata, string? parserName,
         out int parsed, bool wantValue, ref JsonNode? value)
@@ -27,9 +46,11 @@ internal static class DateTimeParsers
             return ErrorCodes.WrongParser;
         }
 
+        var hour = s[i] - '0';
         ++i;
         if (TextRules.IsDigit(npb.At(i)))
         {
+            hour = (hour * 10) + (s[i] - '0');
             ++i;
         }
 
@@ -75,7 +96,17 @@ internal static class DateTimeParsers
         parsed = i + 5 - offs;
         if (wantValue)
         {
-            value = JsonValue.Create(npb.Str.Substring(offs, parsed));
+            var data = (NativeFormatData)pdata!;
+            if (!data.Native)
+            {
+                value = JsonValue.Create(npb.Str.Substring(offs, parsed));
+            }
+            else
+            {
+                var minute = ((s[i] - '0') * 10) + (s[i + 1] - '0');
+                var second = ((s[i + 3] - '0') * 10) + (s[i + 4] - '0');
+                value = JsonValue.Create(new TimeSpan(hour, minute, second));
+            }
         }
 
         return 0;
@@ -158,7 +189,25 @@ internal static class DateTimeParsers
         parsed = 10;
         if (wantValue)
         {
-            value = JsonValue.Create(npb.Str.Substring(offs, parsed));
+            var data = (NativeFormatData)pdata!;
+            if (!data.Native)
+            {
+                value = JsonValue.Create(npb.Str.Substring(offs, parsed));
+            }
+            else
+            {
+                var year = ((s[i] - '0') * 1000) + ((s[i + 1] - '0') * 100) + ((s[i + 2] - '0') * 10) + (s[i + 3] - '0');
+                var month = ((s[i + 5] - '0') * 10) + (s[i + 6] - '0');
+                var day = ((s[i + 8] - '0') * 10) + (s[i + 9] - '0');
+                /* UTC midnight of that date; year is clamped the same way
+                 * SyslogTimeToUnix's 1970..2100 check clamps the epoch-long
+                 * motifs (date-rfc3164/date-rfc5424), so an out-of-range
+                 * year here similarly falls back to the Unix epoch instant
+                 * rather than throwing */
+                value = JsonValue.Create(year is >= 1970 and <= 2100
+                    ? new DateTimeOffset(year, month, day, 0, 0, 0, TimeSpan.Zero)
+                    : DateTimeOffset.UnixEpoch);
+            }
         }
 
         return 0;
@@ -203,7 +252,20 @@ internal static class DateTimeParsers
         parsed = i - offs;
         if (wantValue)
         {
-            value = JsonValue.Create(npb.Str.Substring(offs, parsed));
+            var data = (NativeFormatData)pdata!;
+            if (!data.Native)
+            {
+                value = JsonValue.Create(npb.Str.Substring(offs, parsed));
+            }
+            else
+            {
+                /* strip the enclosing '[' ']'; the fixed 6-digit fraction
+                 * validated above means this is always a well-formed
+                 * "seconds.ffffff" literal */
+                var text = npb.Str.Substring(offs + 1, parsed - 2);
+                var seconds = double.Parse(text, System.Globalization.CultureInfo.InvariantCulture);
+                value = JsonValue.Create(TimeSpan.FromSeconds(seconds));
+            }
         }
 
         return 0;
@@ -567,7 +629,7 @@ internal static class DateTimeParsers
         parsed = 8;
         if (wantValue)
         {
-            value = JsonValue.Create(npb.Str.Substring(offs, parsed));
+            value = HhMmSsValue(s, offs, i, (NativeFormatData)pdata!);
         }
 
         return 0;
@@ -613,10 +675,29 @@ internal static class DateTimeParsers
         parsed = 8;
         if (wantValue)
         {
-            value = JsonValue.Create(npb.Str.Substring(offs, parsed));
+            value = HhMmSsValue(s, offs, i, (NativeFormatData)pdata!);
         }
 
         return 0;
+    }
+
+    /// <summary>
+    /// Materialize an "HH:MM:SS" match (time-24hr/time-12hr) either as the
+    /// raw string or as a native <see cref="TimeSpan"/>, per <paramref name="data"/>.
+    /// <paramref name="i"/> is the hour's starting index (checked by
+    /// <see cref="CheckMmSs"/> to have a valid ":MM:SS" tail at i+2..i+7).
+    /// </summary>
+    private static JsonNode? HhMmSsValue(string s, int offs, int i, NativeFormatData data)
+    {
+        if (!data.Native)
+        {
+            return JsonValue.Create(s.Substring(offs, 8));
+        }
+
+        var hour = ((s[i] - '0') * 10) + (s[i + 1] - '0');
+        var minute = ((s[i + 3] - '0') * 10) + (s[i + 4] - '0');
+        var second = ((s[i + 6] - '0') * 10) + (s[i + 7] - '0');
+        return JsonValue.Create(new TimeSpan(hour, minute, second));
     }
 
     /// <summary>
@@ -700,6 +781,46 @@ internal static class DateTimeParsers
         return 0;
     }
 
+    /// <summary>
+    /// "string" (default) or <paramref name="nativeKeyword"/> ("datetime" for
+    /// date-iso, "timespan" for the duration/time-of-day motifs) — shared by
+    /// every motif whose only choice is "the matched text" vs. "a native
+    /// .NET value of the corresponding KQL type," with no intermediate
+    /// numeric encoding (see <see cref="KqlType"/>/docs/COMPARISON.md: the
+    /// goal is a value a downstream KQL/MessagePack consumer can use as-is,
+    /// with no cast/conversion step of its own).
+    /// </summary>
+    private static int ConstructNativeFormat(ParseContext ctx, JsonObject config, string parserName,
+        string nativeKeyword, out object? pdata)
+    {
+        var data = new NativeFormatData();
+        foreach ((var key, var val) in config)
+        {
+            if (key == "format")
+            {
+                var fmtmode = JsonText.GetLenientString(val) ?? string.Empty;
+                if (fmtmode == nativeKeyword)
+                {
+                    data.Native = true;
+                }
+                else if (fmtmode == "string")
+                {
+                    data.Native = false;
+                }
+                else
+                {
+                    ctx.Error($"invalid value for {parserName}:format {fmtmode}");
+                }
+            }
+            else if (!NumberParsers.IsDashName(key, val))
+            {
+                ctx.Error($"invalid param for {parserName} {key}");
+            }
+        }
+        pdata = data;
+        return 0;
+    }
+
     /// <summary>Parse a decimal integer, advancing index and remaining length (port of hParseInt).</summary>
     private static int HParseInt(string s, ref int i, ref int len)
     {
@@ -716,5 +837,10 @@ internal static class DateTimeParsers
     internal sealed class DateData
     {
         public FormatMode FmtMode = FormatMode.AsString;
+    }
+
+    internal sealed class NativeFormatData
+    {
+        public bool Native;
     }
 }

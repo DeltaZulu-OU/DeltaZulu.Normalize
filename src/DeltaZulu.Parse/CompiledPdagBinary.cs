@@ -8,7 +8,11 @@ namespace DeltaZulu.Parse;
 internal static class CompiledPdagBinary
 {
     private const uint Magic = 0x47414450; // PDAG, little-endian
-    private const ushort Version = 1;
+
+    /// <summary>Bumped to 2 when <see cref="CompiledEdge.KqlType"/> was added,
+    /// and to 3 when date-iso/time-24hr/time-12hr/duration/kernel-timestamp
+    /// gained a Construct (and so, for the first time, non-null Data).</summary>
+    private const ushort Version = 3;
 
     public static void Write(CompiledPdag snap, Stream stream)
     {
@@ -27,7 +31,7 @@ internal static class CompiledPdagBinary
         foreach (var e in snap.Edges)
         {
             w.Write(e.PrsId); w.Write(e.LiteralFirstChar); w.Write(e.TargetNode); w.Write(e.CustomTypeIdx);
-            w.Write((byte)e.Extract); w.Write(e.Name != null); if (e.Name != null) w.Write(e.Name);
+            w.Write((byte)e.Extract); w.Write((byte)e.KqlType); w.Write(e.Name != null); if (e.Name != null) w.Write(e.Name);
             WriteData(w, e.PrsId, e.Data);
         }
         foreach (var t in snap.Terminals)
@@ -54,9 +58,10 @@ internal static class CompiledPdagBinary
         for (var i = 0; i < edges.Length; i++)
         {
             var prsId = r.ReadByte(); var first = r.ReadChar(); var target = r.ReadInt32(); var custom = r.ReadInt32();
-            var extract = (ExtractMode)r.ReadByte(); var name = r.ReadBoolean() ? r.ReadString() : null;
+            var extract = (ExtractMode)r.ReadByte(); var kqlType = (KqlType)r.ReadByte();
+            var name = r.ReadBoolean() ? r.ReadString() : null;
             var data = ReadData(r, prsId);
-            edges[i] = new CompiledEdge(prsId, first, target, custom, data, name, extract);
+            edges[i] = new CompiledEdge(prsId, first, target, custom, data, name, extract, kqlType);
         }
         for (var i = 0; i < terminals.Length; i++)
         {
@@ -91,6 +96,8 @@ internal static class CompiledPdagBinary
             case "float": w.Write((byte)((NumberParsers.FloatData)data!).FmtMode); break;
             case "hexnumber": var hd = (NumberParsers.HexNumberData)data!; w.Write((byte)hd.FmtMode); w.Write(hd.MaxVal); break;
             case "date-rfc3164" or "date-rfc5424": w.Write((byte)((DateTimeParsers.DateData)data!).FmtMode); break;
+            case "date-iso" or "time-24hr" or "time-12hr" or "duration" or "kernel-timestamp":
+                w.Write(((DateTimeParsers.NativeFormatData)data!).Native); break;
             case "op-quoted-string": w.Write(((CoreParsers.OpQuotedStringData)data!).Escape); break;
             case "json": w.Write(((StructuredParsers.JsonData)data!).SkipEmpty); break;
             case "name-value-list": var nv = (StructuredParsers.NameValueData)data!; w.Write(nv.Ass); w.Write(nv.Sep); w.Write(nv.IgnoreWhitespaces); break;
@@ -115,6 +122,8 @@ internal static class CompiledPdagBinary
         "float" => new NumberParsers.FloatData { FmtMode = (FormatMode)r.ReadByte() },
         "hexnumber" => new NumberParsers.HexNumberData { FmtMode = (FormatMode)r.ReadByte(), MaxVal = r.ReadUInt64() },
         "date-rfc3164" or "date-rfc5424" => new DateTimeParsers.DateData { FmtMode = (FormatMode)r.ReadByte() },
+        "date-iso" or "time-24hr" or "time-12hr" or "duration" or "kernel-timestamp" =>
+            new DateTimeParsers.NativeFormatData { Native = r.ReadBoolean() },
         "op-quoted-string" => new CoreParsers.OpQuotedStringData { Escape = r.ReadBoolean() },
         "json" => new StructuredParsers.JsonData { SkipEmpty = r.ReadBoolean() },
         "name-value-list" => new StructuredParsers.NameValueData { Ass = r.ReadChar(), Sep = r.ReadChar(), IgnoreWhitespaces = r.ReadBoolean() },

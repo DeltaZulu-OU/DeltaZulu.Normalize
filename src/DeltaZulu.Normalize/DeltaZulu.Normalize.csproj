@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>DeltaZulu.Normalize</RootNamespace>
+    <AssemblyName>DeltaZulu.Normalize</AssemblyName>
+    <!--
+      Not yet packable: this is the first slice of the semantic view layer
+      docs/adr/0001-naming.md reserved this project for (see
+      docs/adr/0002-kql-common-type-denominator.md, Phase 3). Publishing as
+      its own NuGet package is a separate, later decision once the API
+      surface has settled.
+    -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="DeltaZulu.Normalize.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DeltaZulu.Parse\DeltaZulu.Parse.csproj" />
+  </ItemGroup>
+
+</Project>

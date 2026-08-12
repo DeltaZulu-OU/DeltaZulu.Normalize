@@ -30,17 +30,23 @@ internal readonly struct FieldValue
 {
     public readonly FieldValueKind Kind;
 
+    /// <summary>The KQL scalar type this value corresponds to; <see cref="KqlType.Unknown"/>
+    /// when not set (e.g. the default value, or a caller that doesn't care —
+    /// see the factory methods below).</summary>
+    public readonly KqlType KqlType;
+
     /* string (span source) | JsonNode | FieldCollector, per Kind */
     private readonly int _len;
     private readonly int _offs;
     private readonly object? _ref;
 
-    private FieldValue(FieldValueKind kind, object? reference, int offs, int len)
+    private FieldValue(FieldValueKind kind, object? reference, int offs, int len, KqlType kqlType)
     {
         Kind = kind;
         _ref = reference;
         _offs = offs;
         _len = len;
+        KqlType = kqlType;
     }
 
     /// <summary>The nested collector; only valid when <see cref="Kind"/> is Object.</summary>
@@ -52,14 +58,19 @@ internal readonly struct FieldValue
     /// <summary>The node; only valid when <see cref="Kind"/> is Node.</summary>
     public JsonNode NodeRef => (JsonNode)_ref!;
 
-    public static FieldValue Node(JsonNode? node)
-        => node == null ? default : new(FieldValueKind.Node, node, 0, 0);
+    public static FieldValue Node(JsonNode? node, KqlType kqlType = KqlType.Unknown)
+        => node == null ? default : new(FieldValueKind.Node, node, 0, 0, kqlType);
 
+    /// <summary>Always <see cref="Parse.KqlType.Dynamic"/>: only used for
+    /// user-defined-type sub-walks, whose instantiation is either a
+    /// multi-field object or (via the ".." unwrap in
+    /// <c>PdagWalker.CommitField</c>) collapsed to its one member's own
+    /// value/type before this tag would ever be observed.</summary>
     public static FieldValue Object(FieldCollector collector)
-        => new(FieldValueKind.Object, collector, 0, 0);
+        => new(FieldValueKind.Object, collector, 0, 0, KqlType.Dynamic);
 
-    public static FieldValue Span(string source, int offs, int len)
-                            => new(FieldValueKind.Span, source, offs, len);
+    public static FieldValue Span(string source, int offs, int len, KqlType kqlType = KqlType.Unknown)
+                            => new(FieldValueKind.Span, source, offs, len, kqlType);
 
     /// <summary>
     /// Materialize as a <see cref="JsonNode"/>. Span values allocate their

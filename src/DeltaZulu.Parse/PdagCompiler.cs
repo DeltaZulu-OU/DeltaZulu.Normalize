@@ -216,7 +216,8 @@ internal static class PdagCompiler
                     }
                 }
                 tmp.Edges.Add(new CompiledEdge(prs.PrsId, firstChar, targetIdx,
-                    prs.CustomTypeIndex, data, prs.Name, ClassifyExtract(prs.PrsId, data)));
+                    prs.CustomTypeIndex, data, prs.Name, ClassifyExtract(prs.PrsId, data),
+                    ClassifyKqlType(prs.PrsId, data)));
             }
             return idx;
         }
@@ -230,7 +231,8 @@ internal static class PdagCompiler
         /// </summary>
         private static ExtractMode ClassifyExtract(byte prsId, object? data) => ParserTable.IdToName(prsId) switch {
             /* value == matched substring, unconditionally */
-            "literal" or "whitespace" or "word" or "alpha" or "rest" or "kernel-timestamp" or "date-iso" or "time-24hr" or "time-12hr" or "duration" or "ipv4" or "ipv6" or "mac48" or "string-to" or "char-to" or "char-sep" => ExtractMode.RawSpan,
+            "literal" or "whitespace" or "word" or "alpha" or "rest" or "ipv4" or "ipv6" or "mac48"
+                or "string-to" or "char-to" or "char-sep" => ExtractMode.RawSpan,
             /* value == matched substring in the default string format only */
             "number" => ((NumberParsers.NumberData)data!).FmtMode == FormatMode.AsString
                             ? ExtractMode.RawSpan : ExtractMode.Deferred,
@@ -240,12 +242,55 @@ internal static class PdagCompiler
                             ? ExtractMode.RawSpan : ExtractMode.Deferred,
             "date-rfc3164" or "date-rfc5424" => ((DateTimeParsers.DateData)data!).FmtMode == FormatMode.AsString
                             ? ExtractMode.RawSpan : ExtractMode.Deferred,
+            "kernel-timestamp" or "date-iso" or "time-24hr" or "time-12hr" or "duration" =>
+                ((DateTimeParsers.NativeFormatData)data!).Native ? ExtractMode.Deferred : ExtractMode.RawSpan,
             /* matching is the expensive part; re-running it to extract
              * would cost more than eager extraction saves */
             "repeat" or "json" or "cee-syslog" or "cef" or "v2-iptables" or "name-value-list" or "checkpoint-lea" => ExtractMode.Eager,
             /* derived values (stripped quotes, unescaping, sub-objects):
              * re-run the cheap parse on the success unwind */
             _ => ExtractMode.Deferred,
+        };
+
+        /// <summary>
+        /// Pick the KQL scalar type an edge's value corresponds to, from the
+        /// same (parser type, configuration) inputs <see cref="ClassifyExtract"/>
+        /// uses. This has no upstream liblognorm equivalent — see
+        /// docs/COMPARISON.md. Motifs that always produce structured
+        /// (object/array) output map to Dynamic; user-defined types
+        /// ("USER-DEFINED", the <see cref="ParserTable.IdToName"/> name for
+        /// <see cref="ParserTable.CustomTypeId"/>) default to Dynamic too —
+        /// a type whose pattern collapses to a single scalar via the ".."
+        /// unwrap reports that inner scalar's own type instead, but that
+        /// happens per-value at commit time (<c>PdagWalker.CommitField</c>),
+        /// not here.
+        /// </summary>
+        private static KqlType ClassifyKqlType(byte prsId, object? data) => ParserTable.IdToName(prsId) switch {
+            "literal" or "whitespace" or "word" or "alpha" or "rest" or "ipv4" or "ipv6"
+                or "mac48" or "string-to" or "char-to" or "char-sep" or "op-quoted-string"
+                or "quoted-string" or "string" => KqlType.String,
+            "number" => ((NumberParsers.NumberData)data!).FmtMode == FormatMode.AsNumber
+                            ? KqlType.Long : KqlType.String,
+            "float" => ((NumberParsers.FloatData)data!).FmtMode == FormatMode.AsNumber
+                            ? KqlType.Real : KqlType.String,
+            /* NumberParsers.ParseHexNumber casts the parsed ulong to long
+             * unchecked; values above long.MaxValue wrap to negative */
+            "hexnumber" => ((NumberParsers.HexNumberData)data!).FmtMode == FormatMode.AsNumber
+                            ? KqlType.Long : KqlType.String,
+            /* still an epoch long, not a native DateTime — unlike date-iso
+             * below, changing this would alter this motif's pre-existing,
+             * already-shipped "timestamp-unix[-ms]" behavior, which is out
+             * of scope here; see docs/adr/0002-kql-common-type-denominator.md */
+            "date-rfc3164" or "date-rfc5424" => ((DateTimeParsers.DateData)data!).FmtMode is
+                FormatMode.AsTimestampUnix or FormatMode.AsTimestampUnixMs ? KqlType.Long : KqlType.String,
+            "date-iso" => ((DateTimeParsers.NativeFormatData)data!).Native ? KqlType.DateTime : KqlType.String,
+            "kernel-timestamp" or "time-24hr" or "time-12hr" or "duration" =>
+                ((DateTimeParsers.NativeFormatData)data!).Native ? KqlType.Timespan : KqlType.String,
+            /* structured/array-producing motifs, and user-defined types by
+             * default (see summary above) */
+            "repeat" or "json" or "cee-syslog" or "cef" or "v2-iptables" or "name-value-list"
+                or "checkpoint-lea" or "cisco-interface-spec" or "USER-DEFINED" => KqlType.Dynamic,
+            _ => KqlType.Dynamic,
         };
 
         private sealed class TempNode

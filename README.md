@@ -26,16 +26,19 @@ This is a **direct port of the v2 engine only**:
   - `RulebaseLoader.cs` — the `version=2` rulebase text parser.
   - `Parsers/` — the built-in motif parsers (literal, repeat, dates, numbers, network addresses, quoted/delimited strings, JSON, CEF, name-value lists, etc).
   - `Annotations.cs` — `annotate=` tag-triggered static fields.
-- `bench/DeltaZulu.Parse.Benchmarks/` — BenchmarkDotNet hot-path benchmarks; `bench/BASELINE.md` records the measured effect of each optimization phase.
-- `tools/LogNormalizer.Cli/` — a small CLI (`lognormalizer`), analogous to the C project's `src/lognormalizer.c`: `-r <rulebase>` to load (a file or a directory tree of rulebase files), then reads messages from stdin (or `-m <message>`) and prints one JSON object per line.
+  - `KqlType.cs` — a KQL (Kusto Query Language) scalar type tag (`KqlType.cs`) attached to every extracted field, computed at compile time from the matching motif and its configuration (e.g. `number`'s `format=` option) and exposed via `ParseResult.TryGetKqlType`. This has no upstream liblognorm equivalent — see `docs/COMPARISON.md` — and exists so parsed output can be consumed as KQL-typed data (locally via Tx.Kql, centrally via a transpiler) without a downstream consumer re-inferring types from raw JSON.
+- `src/DeltaZulu.Normalize/` — the semantic view layer `docs/adr/0001-naming.md` reserved the word "normalize" for, in its first slice (`docs/adr/0002-kql-common-type-denominator.md`, Phase 3): `RecordNormalizer.Normalize(ParseResult)` projects a parse onto a `NormalizedRecord` — an ordered list of `NormalizedField(Name, KqlType, Value)` where `Value` is already the native CLR type (`long`, `DateTimeOffset`, `TimeSpan`, ...) that `KqlType` promises, and `Dynamic` fields are a plain `Dictionary`/`List`/primitive object graph rather than a `JsonNode`. Built so a downstream consumer (`Tx.Kql` locally, a MessagePack envelope centrally) needs no cast, parse, or conversion step of its own. References `DeltaZulu.Parse` only; not yet packaged as its own NuGet package.
+- `src/bench/DeltaZulu.Parse.Benchmarks/` — BenchmarkDotNet hot-path benchmarks; `src/bench/BASELINE.md` records the measured effect of each optimization phase.
+- `src/tools/LogNormalizer.Cli/` — a small CLI (`lognormalizer`), analogous to the C project's `src/lognormalizer.c`: `-r <rulebase>` to load (a file or a directory tree of rulebase files), then reads messages from stdin (or `-m <message>`) and prints one JSON object per line.
 - `tests/DeltaZulu.Parse.Tests/` — MSTest tests. Fixtures are behavioral cases ported from the C project's `tests/*.sh` shell fixtures (verified against the real expected output, not blindly copied — the original shell harness's `assert_output_json_eq` only checks a *subset* of fields are present, so a few fixtures needed completing with fields the original assertions omitted, e.g. `event.tags`).
+- `tests/DeltaZulu.Normalize.Tests/` — MSTest tests for `DeltaZulu.Normalize`.
 - `scratch/parity_check.py` — a throwaway (not part of the build) parity harness used during development: it replays every `add_rule`/`execute` pair extracted from the C project's `tests/*.sh` files against both the real C `lognormalizer` binary and this port's CLI, and diffs the JSON output. At the time of writing this passes 381/381 replayed cases with zero mismatches and zero crashes across the full v2-relevant test corpus. Requires the C project to be built first (`autoreconf -fi && ./configure --enable-testbench && make`) — see the main repo's build instructions.
 
 ## Building and testing
 
 ```shell
 dotnet build DeltaZulu.Parse.slnx
-dotnet test tests/DeltaZulu.Parse.Tests
+dotnet test DeltaZulu.Parse.slnx
 ```
 
 ## End-to-end performance benchmarking

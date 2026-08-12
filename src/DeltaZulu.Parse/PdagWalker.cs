@@ -125,7 +125,7 @@ internal static class PdagWalker
                         {
                             /* zero-copy: the string is produced only if the
                              * result is materialized as JsonObject/JsonNode */
-                            value = FieldValue.Span(npb.Str, offs, parsed);
+                            value = FieldValue.Span(npb.Str, offs, parsed, prs.KqlType);
                         }
                         else
                         {
@@ -223,7 +223,7 @@ internal static class PdagWalker
 
         if (metaRule != null)
         {
-            fields.Set(MetaKey, FieldValue.Node(new JsonObject { [MetaRuleKey] = metaRule }));
+            fields.Set(MetaKey, FieldValue.Node(new JsonObject { [MetaRuleKey] = metaRule }, KqlType.Dynamic));
         }
     }
 
@@ -241,8 +241,8 @@ internal static class PdagWalker
         /* full-range and tail slices; a whole-string span materializes back
          * to the original string instance without a copy */
         var start = Math.Min(offs, str.Length);
-        fields.Set(OriginalMsgKey, FieldValue.Span(str, 0, str.Length));
-        fields.Set(UnparsedDataKey, FieldValue.Span(str, start, str.Length - start));
+        fields.Set(OriginalMsgKey, FieldValue.Span(str, 0, str.Length, KqlType.String));
+        fields.Set(UnparsedDataKey, FieldValue.Span(str, start, str.Length - start, KqlType.String));
     }
 
     /// <summary>
@@ -302,7 +302,7 @@ internal static class PdagWalker
                         }
 
                         obj.Remove(key);
-                        fields.Set(key, FieldValue.Node(val));
+                        fields.Set(key, FieldValue.Node(val, KqlTypeInference.InferFromNode(val)));
                     }
                 }
                 else
@@ -333,7 +333,7 @@ internal static class PdagWalker
 
                 var dotdot = subObj[".."];
                 subObj.Remove("..");
-                fields.Set(prs.Name, FieldValue.Node(dotdot));
+                fields.Set(prs.Name, FieldValue.Node(dotdot, KqlTypeInference.InferFromNode(dotdot)));
             }
             else
             {
@@ -376,7 +376,7 @@ internal static class PdagWalker
             JsonNode? node = null;
             ParserTable.Dispatch(prs.PrsId, npb, ref i, prs.Data, prs.Name,
                 out _, wantValue: true, ref node);
-            value = FieldValue.Node(node);
+            value = FieldValue.Node(node, prs.KqlType);
         }
         npb.ParsedTo = parsedToSave;
     }
@@ -401,12 +401,12 @@ internal static class PdagWalker
             {
                 /* Tags is shared with the builder graph and outlives this
                  * parse, so it must be cloned eagerly */
-                fields.Set("event.tags", FieldValue.Node(term.Tags.DeepClone()));
+                fields.Set("event.tags", FieldValue.Node(term.Tags.DeepClone(), KqlType.Dynamic));
                 ctx.Annotations.Annotate(fields, term.Tags);
             }
             if ((ctx.Options & ParseOptions.AddOriginalMessage) != 0)
             {
-                fields.Set(OriginalMsgKey, FieldValue.Span(str, 0, str.Length));
+                fields.Set(OriginalMsgKey, FieldValue.Span(str, 0, str.Length, KqlType.String));
             }
 
             AddRuleMetadata(npb, fields, term);
@@ -479,7 +479,7 @@ internal static class PdagWalker
             JsonNode? node = null;
             r = ParserTable.Dispatch(prs.PrsId, npb, ref offs, prs.Data, parserName,
                 out parsed, wantValue: prs.Name != null, ref node);
-            value = FieldValue.Node(node);
+            value = FieldValue.Node(node, prs.KqlType);
         }
         else
         {

@@ -44,6 +44,12 @@ internal readonly struct CompiledEdge
     /// from the parser type and its configuration).</summary>
     public readonly ExtractMode Extract;
 
+    /// <summary>The KQL scalar type this edge's value corresponds to,
+    /// decided at compile time from the parser type and its configuration
+    /// (same inputs as <see cref="Extract"/>). Has no upstream liblognorm
+    /// equivalent.</summary>
+    public readonly KqlType KqlType;
+
     /// <summary>First char of a literal edge's text, letting the walker reject
     /// the edge without a call. '\0' disables the filter (non-literal edges,
     /// and the rare literal that is empty or starts with NUL).</summary>
@@ -60,7 +66,7 @@ internal readonly struct CompiledEdge
     public readonly int TargetNode;
 
     public CompiledEdge(byte prsId, char literalFirstChar, int targetNode,
-        int customTypeIdx, object? data, string? name, ExtractMode extract)
+        int customTypeIdx, object? data, string? name, ExtractMode extract, KqlType kqlType)
     {
         PrsId = prsId;
         LiteralFirstChar = literalFirstChar;
@@ -69,6 +75,7 @@ internal readonly struct CompiledEdge
         Data = data;
         Name = name;
         Extract = extract;
+        KqlType = kqlType;
     }
 }
 

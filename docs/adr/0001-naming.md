@@ -2,7 +2,12 @@
 
 ## Status
 
-Accepted.
+Accepted. Naming decision stands. Its prediction of what the reserved
+"normalize" layer would do (map extracted fields onto a common
+ASIM/ECS-style schema) is superseded by ADR-3
+(`docs/adr/0003-no-schema-mapping.md`) — see that ADR; this one's
+Context/Decision text below is left as originally written, per this
+project's immutable-ADR convention.
 
 ## Context
 
