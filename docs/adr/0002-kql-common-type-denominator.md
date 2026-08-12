@@ -120,14 +120,16 @@ MessagePack resolver — or any other serializer — can walk them with no
 `System.Text.Json` dependency and no custom formatter, per this ADR's
 "same data type contracts" requirement.
 
-This is a first slice, not the finished layer: it answers "what's an
-in-process typed row" but not the two questions that need the actual
-`Tx.Kql`/MessagePack-envelope integration in hand to answer correctly —
-a rule/tag → target-table/column-name schema mapping (right now a
-`NormalizedRecord`'s columns are exactly the parsed field names, with no
-renaming/routing), and whatever `Tx.Kql`-specific interface (beyond a
-plain `IReadOnlyList<NormalizedField>`) its filtering/enriching/
-projecting actually wants to consume.
+A `NormalizedRecord`'s columns are exactly the parsed field names, with no
+renaming or routing — this is deliberate and final, not a gap: schema
+mapping (rule/tag → target table/column) is not this layer's job.
+`DeltaZulu.Parse`/`DeltaZulu.Normalize` are a parser and a KQL-typed
+record projection, respectively; whatever consumes `NormalizedRecord`
+(`Tx.Kql`, a transpiler) owns any schema mapping on its own side. The one
+thing this first slice doesn't yet answer is the exact `Tx.Kql`-facing
+interface (beyond a plain `IReadOnlyList<NormalizedField>`) its
+filtering/enriching/projecting actually wants to consume — that needs the
+real integration in hand, not guessed at from this repo alone.
 
 ## Consequences
 
@@ -161,7 +163,11 @@ projecting actually wants to consume.
   `DeltaZulu.Normalize` has no liblognorm/json-c analog at all to compare
   against (see ADR-1: "normalize" was reserved for exactly this,
   non-comparable layer).
-- Phase 3 beyond this first slice is still follow-on work: the schema
-  mapping (rule/tag → target table/column) and the exact `Tx.Kql`-facing
-  interface both need the real integration in hand to get right, not
-  guessed at from this repo alone.
+- Schema mapping (rule/tag → target table/column) is explicitly **not**
+  this layer's job — `NormalizedRecord`'s columns are, permanently, the
+  parsed field names as-is. Confirmed: this codebase is a parser plus a
+  KQL-typed record projection, not a schema mapper; that responsibility
+  sits entirely with whatever consumes `NormalizedRecord`.
+- What Phase 3 still doesn't answer: the exact `Tx.Kql`-facing interface
+  (beyond a plain `IReadOnlyList<NormalizedField>`) needs the real
+  integration in hand to get right, not guessed at from this repo alone.
