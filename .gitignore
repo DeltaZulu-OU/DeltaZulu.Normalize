@@ -380,4 +380,4 @@ FodyWeavers.xsd
 # Lock file
 packages.lock.json
 !**/packages.lock.json
-/tests/DeltaZulu.Parse.Tests/packages.lock.json
+/tests/DeltaZulu.Normalize.Tests/packages.lock.json
