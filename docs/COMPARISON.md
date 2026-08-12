@@ -387,6 +387,23 @@ and running the real C library)
   variants) is much thinner in C# (1 test) than upstream (9 dedicated
   fixtures).
 
+### New capability (not a deviation — no C equivalent to compare against)
+
+- **`SyslogEnvelope`/`SyslogDecoder`** (`src/DeltaZulu.Parse/SyslogEnvelope.cs`)
+  and the CLI's `--syslog` flag. liblognorm has no concept of syslog
+  transport framing anywhere in its code or docs — it normalizes an
+  already-extracted message string, and in the reference deployment
+  rsyslog's own RFC3164/5424-aware parser modules do that extraction
+  before `mmnormalize` ever runs (confirmed against rsyslog's own
+  `mmnormalize` docs: it defaults to normalizing `$msg`, the
+  already-header-stripped property; `useRawMsg` exists specifically as a
+  non-default opt-out). This is a from-scratch addition with nothing in
+  `liblognorm.c`/`samp.c`/`pdag.c` to audit against — see
+  `docs/adr/0006-syslog-envelope-predecoder.md` for the full rationale.
+  It is deliberately *not* part of the PDAG/rulebase engine: it runs
+  before `Parse(...)`, never inside it, and a caller who never calls it is
+  completely unaffected.
+
 
 ## Summary: what to do with this
 
