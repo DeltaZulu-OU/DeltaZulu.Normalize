@@ -1,0 +1,3 @@
+version=2
+type=@hex-byte:%f1:hexnumber{"maxval": "255"}%
+rule=:a word %w1:word% a byte %   .:@hex-byte   % another word %w2:word%

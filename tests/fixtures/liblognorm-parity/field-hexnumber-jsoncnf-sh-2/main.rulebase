@@ -1,0 +1,2 @@
+version=2
+rule=:here is a number %{"name":"num", "type":"hexnumber"}% in hex form

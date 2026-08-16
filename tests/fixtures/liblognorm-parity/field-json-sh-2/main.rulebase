@@ -1,0 +1,5 @@
+version=2
+rule=:%field:json%
+rule=:begin %field:json%
+rule=:begin %field:json%end
+rule=:%field:json%end

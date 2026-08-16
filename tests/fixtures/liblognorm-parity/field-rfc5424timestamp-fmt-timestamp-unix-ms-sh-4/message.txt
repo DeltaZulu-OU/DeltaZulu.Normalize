@@ -1,0 +1,1 @@
+here is a timestamp 2000-03-11T14:15:16.123+01:00 in RFC5424 format

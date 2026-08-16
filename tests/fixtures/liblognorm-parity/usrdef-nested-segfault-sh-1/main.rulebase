@@ -1,0 +1,5 @@
+version=2
+type=@hex-byte:%..:hexnumber{"maxval": "255"}%
+type=@two-hex-bytes:%f1:@hex-byte% %f2:@hex-byte%
+type=@unused:stop
+rule=:two bytes %.:@two-hex-bytes% %-:@unused%

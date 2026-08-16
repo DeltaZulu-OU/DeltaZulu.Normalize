@@ -1,0 +1,6 @@
+version=2
+type=@IPaddr:%..:ipv4%
+type=@IPaddr:%..:ipv6%
+type=@ipOrNumber:%..:@IPaddr{"priority":"1000"}%
+type=@ipOrNumber:%..:number%
+rule=:a word %w1:word% an ip address %ip:@ipOrNumber% another word %w2:word%

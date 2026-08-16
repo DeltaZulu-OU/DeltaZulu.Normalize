@@ -1,0 +1,4 @@
+version=2
+rule=:a %f:string{"matching.permitted":[
+			       {"class":"alpha"}
+                               ]}% b

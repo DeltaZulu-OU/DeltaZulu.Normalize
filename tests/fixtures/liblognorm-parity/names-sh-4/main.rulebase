@@ -1,0 +1,2 @@
+version=2
+rule=:a %-:number%:%hex:hexnumber% b

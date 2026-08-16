@@ -1,0 +1,2 @@
+version=2
+rule=:%{"name":"f", "type":"name-value-list", "separator":",", "assignator":":"}%

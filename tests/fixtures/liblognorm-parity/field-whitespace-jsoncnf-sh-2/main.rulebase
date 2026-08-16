@@ -1,0 +1,2 @@
+version=2
+rule=:%{"name":"a", "type":"op-quoted-string"}%%{"name":"-", "type":"whitespace"}%%{"name":"b", "type":"op-quoted-string"}%

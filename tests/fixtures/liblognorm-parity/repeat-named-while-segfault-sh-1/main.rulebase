@@ -1,0 +1,8 @@
+version=2
+rule=:a %
+        {"name":"numbers", "type":"repeat",
+            "parser":
+                     {"type":"number", "name":"n"},
+            "while":
+                     {"type":"char-to", "name":"host", "extradata":":"}
+         }% b

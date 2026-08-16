@@ -1,0 +1,4 @@
+version=2
+rule=:a word %w1:word% %l1:literal{"text":"l"}% b
+rule=:a word %w1:word% %l2:literal{"text":"l2"}% b
+rule=:a word %w1:word% l3 b

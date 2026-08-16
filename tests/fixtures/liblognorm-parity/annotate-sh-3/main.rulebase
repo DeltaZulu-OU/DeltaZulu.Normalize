@@ -1,0 +1,6 @@
+version=2
+rule=ABC,WIN:<%-:number%>1 %-:date-rfc5424% %-:word% %tag:word% - - -
+rule=ABC:<%-:number%>1 %-:date-rfc5424% %-:word% %tag:word% + - -
+rule=WIN:<%-:number%>1 %-:date-rfc5424% %-:word% %tag:word% . - -
+annotate=WIN:+annot1="WIN" # inline-comment
+annotate=ABC:+annot2="ABC"

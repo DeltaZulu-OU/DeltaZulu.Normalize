@@ -1,0 +1,4 @@
+version=2
+rule=:%
+		{"type":"quoted-string", "name":"str"}
+	 %

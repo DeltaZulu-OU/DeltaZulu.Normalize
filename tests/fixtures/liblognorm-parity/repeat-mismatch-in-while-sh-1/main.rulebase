@@ -1,0 +1,3 @@
+version=2
+prefix=%timestamp:date-rfc3164% %hostname:word%
+rule=cisco,fwblock: \x25ASA-6-106015\x3a Deny %proto:word% (no connection) from %source:cisco-interface-spec% to %dest:cisco-interface-spec% flags %flags:repeat{ "parser": {"type":"word", "name":"."}, "while":{"type":"literal", "text":" "} }% on interface %srciface:word%

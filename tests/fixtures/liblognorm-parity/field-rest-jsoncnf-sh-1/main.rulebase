@@ -1,0 +1,5 @@
+version=2
+rule=:%{"name":"iface", "type":"char-to", "extradata":":"}%:%{"name":"ip", "type":"ipv4"}%/%{"name":"port", "type":"number"}% (%{"name":"label2", "type":"char-to", "extradata":")"}%)
+rule=:%{"name":"iface", "type":"char-to", "extradata":":"}%:%{"name":"ip", "type":"ipv4"}%/%{"name":"port", "type":"number"}% (%{"name":"label2", "type":"char-to", "extradata":")"}%)%{"name":"tail", "type":"rest"}%
+rule=:%{"name":"iface", "type":"char-to", "extradata":":"}%:%{"name":"ip", "type":"ipv4"}%/%{"name":"port", "type":"number"}%
+rule=:%{"name":"iface", "type":"char-to", "extradata":":"}%:%{"name":"ip", "type":"ipv4"}%/%{"name":"port", "type":"number"}%%{"name":"tail", "type":"rest"}%

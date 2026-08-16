@@ -1,0 +1,6 @@
+version=2
+rule=:%string:string%
+rule=:before %string:string%
+rule=:%string:string% after
+rule=:before %string:string% after
+rule=:before %string:string% middle %string:string%

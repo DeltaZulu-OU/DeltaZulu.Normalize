@@ -1,0 +1,5 @@
+version=2
+rule=:a %f:string{"matching.permitted":[
+			       {"class":"digit"},
+			       {"chars":"x"}
+                               ]}% b

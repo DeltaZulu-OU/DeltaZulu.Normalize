@@ -1,0 +1,4 @@
+version=2
+type=@IPaddr:%..:ipv4%
+type=@IPaddr:%..:ipv6%
+rule=:a word %w1:word% an ip address %ip:@IPaddr% another word %w2:word%

@@ -1,0 +1,2 @@
+version=2
+rule=:here is a number %{ "type":"float", "name":"num", "format":"number"}% in floating pt form

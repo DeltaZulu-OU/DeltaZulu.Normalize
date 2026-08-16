@@ -1,0 +1,2 @@
+version=2
+rule=:iptables output denied: %field:v2-iptables%

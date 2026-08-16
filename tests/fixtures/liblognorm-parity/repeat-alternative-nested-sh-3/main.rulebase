@@ -1,0 +1,15 @@
+version=2
+rule=:a %{"name":"numbers", "type":"repeat",
+			"parser":
+                            { "type":"alternative", "parser": [
+	                           [ {"type":"number", "name":"n1"},
+			             {"type":"literal", "text":":"},
+		              	     {"type":"number", "name":"n2"},
+		              	   ],
+		              	   {"type":"hexnumber", "name":"hex"}
+		               ]
+			    },
+			"while":[
+			  {"type":"literal", "text":", "}
+			]
+       		   }% b

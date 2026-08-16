@@ -1,0 +1,2 @@
+version=2
+rule=:here is a number %num:float% in floating pt form

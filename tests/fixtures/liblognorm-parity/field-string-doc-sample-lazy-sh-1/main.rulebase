@@ -1,0 +1,3 @@
+version=2
+rule=:%f:string{"matching.permitted":[ {"class":"digit"} ], "matching.mode":"lazy"}
+                   %%r:rest%

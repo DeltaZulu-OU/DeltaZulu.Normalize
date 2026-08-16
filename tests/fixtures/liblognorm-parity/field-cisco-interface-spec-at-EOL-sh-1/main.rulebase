@@ -1,0 +1,2 @@
+version=2
+rule=:begin %field:cisco-interface-spec%%r:rest%
