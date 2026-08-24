@@ -1,0 +1,3 @@
+version=2
+rule=:%{"name":"field", "type":"mac48"}%
+rule=:%{"name":"rest", "type":"rest"}%

@@ -1,0 +1,2 @@
+version=2
+rule=:a %[{"name":"num", "type":"number"}, {"name":"colon", "type":"literal", "text":":"}, {"name":"hex", "type":"hexnumber"}]% b

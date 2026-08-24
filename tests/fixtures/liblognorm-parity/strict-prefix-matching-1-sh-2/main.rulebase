@@ -1,0 +1,3 @@
+version=2
+rule=:a word %w1:word%
+rule=:a word %w1:word% another word %w2:word%

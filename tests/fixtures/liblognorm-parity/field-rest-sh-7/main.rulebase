@@ -1,0 +1,5 @@
+version=2
+rule=:%iface:char-to:\x3a%\x3a%ip:ipv4%/%port:number% (%label2:char-to:)%)
+rule=:%iface:char-to:\x3a%\x3a%ip:ipv4%/%port:number% (%label2:char-to:)%)%tail:rest%
+rule=:%iface:char-to:\x3a%\x3a%ip:ipv4%/%port:number%
+rule=:%iface:char-to:\x3a%\x3a%ip:ipv4%/%port:number%%tail:rest%

@@ -1,0 +1,5 @@
+version=2
+rule=:test %f1:word unmatched percent
+
+#comment
+rule=:%field:word%

@@ -1,0 +1,10 @@
+version=2
+rule=:Rule-ID:%-:whitespace%%
+        f:string{"matching.permitted":[
+            {"class":"digit"},
+            {"chars":"abcdefghijklmnopqrstuvwxyz"},
+            {"chars":"ABCDEFGHIJKLMNOPQRSTUVWXYZ"},
+            {"chars":"-"},
+        ],
+	"quoting.escape.mode":"none",
+	"matching.mode":"lazy"}%%resta:rest%

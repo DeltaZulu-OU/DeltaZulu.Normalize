@@ -1,0 +1,11 @@
+version=2
+rule=:a %{"name":"numbers", "type":"repeat",
+			"option.failOnDuplicate": true,
+			"parser":[
+			  {"name":"n", "type":"number"},
+			  {"type":"literal", "text":":"},
+			  {"name":"n", "type":"number"}
+			  ],
+			"while":
+			  {"type":"literal", "text":", "}
+       		   }% b

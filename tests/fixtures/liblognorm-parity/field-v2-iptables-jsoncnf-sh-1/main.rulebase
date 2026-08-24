@@ -1,0 +1,2 @@
+version=2
+rule=:iptables output denied: %{"name":"field", "type":"v2-iptables"}%

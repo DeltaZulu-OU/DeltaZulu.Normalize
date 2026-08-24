@@ -1,0 +1,2 @@
+version=2
+rule=:here is a timestamp %{ "type":"date-rfc5424", "name":"num", "format":"timestamp-unix-ms"}% in RFC5424 format

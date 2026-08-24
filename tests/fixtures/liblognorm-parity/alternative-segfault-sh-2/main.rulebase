@@ -1,0 +1,2 @@
+version=2
+rule=:%host:ipv4% %{"type":"alternative","parser":[{"type":"literal","text":"-"},{"type":"number","name":"identd"}]}% %OK:word%

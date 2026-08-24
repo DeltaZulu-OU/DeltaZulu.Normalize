@@ -1,0 +1,2 @@
+version=2
+rule=:here is a negative number %num:float% for you

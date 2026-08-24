@@ -1,0 +1,1 @@
+CEF:0|Vendor|Product|Version|Signature ID|some name|Severity| aa=field1 bb=this is a \= value cc=field 3

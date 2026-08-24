@@ -1,0 +1,2 @@
+version=2
+rule=:here is a negative number %{ "type":"float", "name":"num", "format":"number"}% for you

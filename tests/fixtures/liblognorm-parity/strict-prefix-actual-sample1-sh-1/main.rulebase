@@ -1,0 +1,4 @@
+version=2
+prefix=%timestamp:date-rfc3164% %hostname:word% BL-WLC01: *%programname:char-to:\x3a%: %timestamp:date-rfc3164%.%fracsec:number%:
+rule=wifi: #LOG-3-Q_IND: webauth_redirect.c:1238 read error on server socket, errno=131[...It occurred %count:number% times.!]
+rule=wifi: #LOG-3-Q_IND: webauth_redirect.c:1238 read error on server socket, errno=131

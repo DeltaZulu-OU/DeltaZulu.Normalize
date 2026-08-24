@@ -1,0 +1,2 @@
+version=2
+rule=:here is another real number %{ "type":"float", "name":"num", "format":"number"}%.

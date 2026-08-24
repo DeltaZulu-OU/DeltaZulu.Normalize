@@ -1,0 +1,2 @@
+version=2
+rule=:%{"type":"literal", "text":"a", "name":"var"}%

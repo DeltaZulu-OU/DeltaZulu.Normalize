@@ -1,0 +1,4 @@
+version=2
+type=@IPaddr:%..:ipv4%
+type=@IPaddr:%..:ipv6%
+rule=:an ip address %ip:@IPaddr%

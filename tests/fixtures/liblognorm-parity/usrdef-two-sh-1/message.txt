@@ -1,0 +1,1 @@
+a word w1 a byte 0xff another word w2

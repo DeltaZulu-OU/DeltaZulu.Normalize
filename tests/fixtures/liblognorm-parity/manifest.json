@@ -1,0 +1,5199 @@
+{
+  "source": {
+    "repository": "https://github.com/rsyslog/liblognorm",
+    "commit": "13e89c3f4314dde9a0b649ddd4e3159c7e641946",
+    "commit_date": "2026-08-12T10:11:40+02:00",
+    "extracted": "2026-08-16"
+  },
+  "case_count": 384,
+  "discovery_stats": {
+    "fixture_files_found": 140,
+    "fixture_files_selected": 111,
+    "skipped_by_name": 25,
+    "skipped_without_rules": 4,
+    "skipped_execute_with_string": 0,
+    "skipped_without_rulebase": 0,
+    "skipped_without_v2_version": 130
+  },
+  "cases_with_auxiliary_rulebases": 3,
+  "cases_with_cross_file_type_references": 0,
+  "motif_coverage": {
+    "number": 56,
+    "ipv6": 45,
+    "word": 33,
+    "ipv4": 32,
+    "name-value-list": 31,
+    "cef": 30,
+    "hexnumber": 30,
+    "json": 28,
+    "literal": 28,
+    "rest": 25,
+    "kernel-timestamp": 22,
+    "char-to": 20,
+    "alternative": 18,
+    "mac48": 17,
+    "v2-iptables": 15,
+    "date-rfc5424": 13,
+    "op-quoted-string": 13,
+    "string": 13,
+    "duration": 12,
+    "checkpoint-lea": 11,
+    "cee-syslog": 10,
+    "whitespace": 10,
+    "float": 9,
+    "repeat": 9,
+    "cisco-interface-spec": 5,
+    "date-rfc3164": 4,
+    "quoted-string": 4
+  },
+  "cases": [
+    {
+      "label": "alternative_nested.sh#1",
+      "slug": "alternative-nested-sh-1",
+      "fixture": "alternative_nested.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "86d1f4003c91f9c8eb7eb3b08cb4d67a23bbd622c50c62bb174fdcdc2d8dfa18",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "alternative_nested.sh#2",
+      "slug": "alternative-nested-sh-2",
+      "fixture": "alternative_nested.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "efcba28a30c844edfaee0bcaadda933196c0bfdb3335d1cb70f1de6a3e5f4f2d",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "alternative_segfault.sh#1",
+      "slug": "alternative-segfault-sh-1",
+      "fixture": "alternative_segfault.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0d190e67a9bfaddfffd153ddc76edcc0bbd3fa590a961b9b3d9f04f4fdb83541",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "ipv4",
+        "literal",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "alternative_segfault.sh#2",
+      "slug": "alternative-segfault-sh-2",
+      "fixture": "alternative_segfault.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7e63e437369018937153043a794a250d4664bf714e3a023d82447f603dde1a64",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "ipv4",
+        "literal",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "alternative_segfault.sh#3",
+      "slug": "alternative-segfault-sh-3",
+      "fixture": "alternative_segfault.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ba5063fd5477c5e410e908837d83936b1e4a638bb1df171a632135b6ca996381",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "ipv4",
+        "literal",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "alternative_simple.sh#1",
+      "slug": "alternative-simple-sh-1",
+      "fixture": "alternative_simple.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2340333455056fe739d53946e4432b0f9b45c2383a0edfc193adccea28610169",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "number"
+      ]
+    },
+    {
+      "label": "alternative_simple.sh#2",
+      "slug": "alternative-simple-sh-2",
+      "fixture": "alternative_simple.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "efcba28a30c844edfaee0bcaadda933196c0bfdb3335d1cb70f1de6a3e5f4f2d",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "number"
+      ]
+    },
+    {
+      "label": "alternative_three.sh#1",
+      "slug": "alternative-three-sh-1",
+      "fixture": "alternative_three.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2340333455056fe739d53946e4432b0f9b45c2383a0edfc193adccea28610169",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "alternative_three.sh#2",
+      "slug": "alternative-three-sh-2",
+      "fixture": "alternative_three.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "efcba28a30c844edfaee0bcaadda933196c0bfdb3335d1cb70f1de6a3e5f4f2d",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "alternative_three.sh#3",
+      "slug": "alternative-three-sh-3",
+      "fixture": "alternative_three.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c1543a2cf761131f30b7eff4ca22e63e3e834402594b70e19a53bde88dfebe40",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "annotate.sh#1",
+      "slug": "annotate-sh-1",
+      "fixture": "annotate.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a59ee57b7f1fe81f630625d240e3d985d3be89dd7b18a726aeb03ba8c5dada45",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "annotate.sh#2",
+      "slug": "annotate-sh-2",
+      "fixture": "annotate.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "97bea8e848cb5457ea9ea027fc3cb50536111536cf6e248775ab2459bc4383f5",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "annotate.sh#3",
+      "slug": "annotate-sh-3",
+      "fixture": "annotate.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7ba4db7f3073d583c894cb98d813b4827f1ab7b3ae56717a84f4b03cee02493b",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "field_cee-syslog.sh#1",
+      "slug": "field-cee-syslog-sh-1",
+      "fixture": "field_cee-syslog.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3fe61762aecfdefd51bd77ed274071add386720f86cdedbb38a8ad176c84bb7d",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog.sh#2",
+      "slug": "field-cee-syslog-sh-2",
+      "fixture": "field_cee-syslog.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2ba0c92a2e479a74b03a8beb9dfe24a3ebe5ca3d8349e4c7a0e85701648b5a2b",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog.sh#3",
+      "slug": "field-cee-syslog-sh-3",
+      "fixture": "field_cee-syslog.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "518084cb423afdb8f6dd629148c3284e4eb6ded27d3ca2a221c277fd1b02c1e9",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog.sh#4",
+      "slug": "field-cee-syslog-sh-4",
+      "fixture": "field_cee-syslog.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e04b44bcd3ca35d90f2662839a7f3cf30ee022d92956f87eb531926db7a71c5b",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog.sh#5",
+      "slug": "field-cee-syslog-sh-5",
+      "fixture": "field_cee-syslog.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "852b33484ee8eb2841c87834de71308bc3affd458d5723d60b60ebd575e12055",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog_jsoncnf.sh#1",
+      "slug": "field-cee-syslog-jsoncnf-sh-1",
+      "fixture": "field_cee-syslog_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3fe61762aecfdefd51bd77ed274071add386720f86cdedbb38a8ad176c84bb7d",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog_jsoncnf.sh#2",
+      "slug": "field-cee-syslog-jsoncnf-sh-2",
+      "fixture": "field_cee-syslog_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2ba0c92a2e479a74b03a8beb9dfe24a3ebe5ca3d8349e4c7a0e85701648b5a2b",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog_jsoncnf.sh#3",
+      "slug": "field-cee-syslog-jsoncnf-sh-3",
+      "fixture": "field_cee-syslog_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "518084cb423afdb8f6dd629148c3284e4eb6ded27d3ca2a221c277fd1b02c1e9",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog_jsoncnf.sh#4",
+      "slug": "field-cee-syslog-jsoncnf-sh-4",
+      "fixture": "field_cee-syslog_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e04b44bcd3ca35d90f2662839a7f3cf30ee022d92956f87eb531926db7a71c5b",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cee-syslog_jsoncnf.sh#5",
+      "slug": "field-cee-syslog-jsoncnf-sh-5",
+      "fixture": "field_cee-syslog_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "852b33484ee8eb2841c87834de71308bc3affd458d5723d60b60ebd575e12055",
+      "include_directives": [],
+      "motifs": [
+        "cee-syslog"
+      ]
+    },
+    {
+      "label": "field_cef.sh#1",
+      "slug": "field-cef-sh-1",
+      "fixture": "field_cef.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0f5ba1e7934766bb3e0cfd2540b0ada73209edcf2b58a86df1e4f33ba7038129",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#2",
+      "slug": "field-cef-sh-2",
+      "fixture": "field_cef.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a107b0d376f07eb3c28768241c4c39fbd39e908f4a31de0a49b44749d531a014",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#3",
+      "slug": "field-cef-sh-3",
+      "fixture": "field_cef.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "289b1e7e3944a147a7c2cadf5500b05276381f462b443a7e161f828a0b07e513",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#4",
+      "slug": "field-cef-sh-4",
+      "fixture": "field_cef.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d79f8c4a65319299d6dbc2341b32eafaf59595ea597e9e765b4e09e78e7838c6",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#5",
+      "slug": "field-cef-sh-5",
+      "fixture": "field_cef.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f3ba652515ea546d0c30e5525ee017f234354d983b1007aed91f9e0cd6d7b1f8",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#6",
+      "slug": "field-cef-sh-6",
+      "fixture": "field_cef.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b21b5344bc3e0b3e8f6cc9336e52a0b8b452c9762a2f33f768aef8e1b95becc6",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#7",
+      "slug": "field-cef-sh-7",
+      "fixture": "field_cef.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f4b6b87b7b6b384c645dba44afcff1f55b70faeb4ca539356f78d5a0e32a494b",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#8",
+      "slug": "field-cef-sh-8",
+      "fixture": "field_cef.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7ba28b3b0a536b530c1e19b72057c10e5bdb7222486c9c4ddec52c691771bfdc",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#9",
+      "slug": "field-cef-sh-9",
+      "fixture": "field_cef.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "abf13aed64067c81ee3adf587d31873c7cd29bd06fe39e1f0f92f18f20961e9a",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#10",
+      "slug": "field-cef-sh-10",
+      "fixture": "field_cef.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "59cf9e693b6626b296539ccd2b0363f2d35b74dc53cb8abbd168fbecf9a5a443",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#11",
+      "slug": "field-cef-sh-11",
+      "fixture": "field_cef.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "04d7ae7cd779fcff9a343aa67b224b5b5ba0ecb0b7cc816cb7cb5cdf7759d02f",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#12",
+      "slug": "field-cef-sh-12",
+      "fixture": "field_cef.sh",
+      "case_number": 12,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b1e7ea63457bf00721e59c8570c8dfe35b11b67f35c5893a98f330b8400f1407",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#13",
+      "slug": "field-cef-sh-13",
+      "fixture": "field_cef.sh",
+      "case_number": 13,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "cb9bc388da30441cf008b16f5db0b8dfe4ab67b78efa1529c9a4954b17d9b59e",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#14",
+      "slug": "field-cef-sh-14",
+      "fixture": "field_cef.sh",
+      "case_number": 14,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef.sh#15",
+      "slug": "field-cef-sh-15",
+      "fixture": "field_cef.sh",
+      "case_number": 15,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c663ea043fef27a88b842f7b8e9420ff2ceaf6aedfdfa7e351e4d0004c70ad4f",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#1",
+      "slug": "field-cef-jsoncnf-sh-1",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0f5ba1e7934766bb3e0cfd2540b0ada73209edcf2b58a86df1e4f33ba7038129",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#2",
+      "slug": "field-cef-jsoncnf-sh-2",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a107b0d376f07eb3c28768241c4c39fbd39e908f4a31de0a49b44749d531a014",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#3",
+      "slug": "field-cef-jsoncnf-sh-3",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "289b1e7e3944a147a7c2cadf5500b05276381f462b443a7e161f828a0b07e513",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#4",
+      "slug": "field-cef-jsoncnf-sh-4",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d79f8c4a65319299d6dbc2341b32eafaf59595ea597e9e765b4e09e78e7838c6",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#5",
+      "slug": "field-cef-jsoncnf-sh-5",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f3ba652515ea546d0c30e5525ee017f234354d983b1007aed91f9e0cd6d7b1f8",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#6",
+      "slug": "field-cef-jsoncnf-sh-6",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b21b5344bc3e0b3e8f6cc9336e52a0b8b452c9762a2f33f768aef8e1b95becc6",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#7",
+      "slug": "field-cef-jsoncnf-sh-7",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f4b6b87b7b6b384c645dba44afcff1f55b70faeb4ca539356f78d5a0e32a494b",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#8",
+      "slug": "field-cef-jsoncnf-sh-8",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7ba28b3b0a536b530c1e19b72057c10e5bdb7222486c9c4ddec52c691771bfdc",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#9",
+      "slug": "field-cef-jsoncnf-sh-9",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "abf13aed64067c81ee3adf587d31873c7cd29bd06fe39e1f0f92f18f20961e9a",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#10",
+      "slug": "field-cef-jsoncnf-sh-10",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "59cf9e693b6626b296539ccd2b0363f2d35b74dc53cb8abbd168fbecf9a5a443",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#11",
+      "slug": "field-cef-jsoncnf-sh-11",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "04d7ae7cd779fcff9a343aa67b224b5b5ba0ecb0b7cc816cb7cb5cdf7759d02f",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#12",
+      "slug": "field-cef-jsoncnf-sh-12",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 12,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b1e7ea63457bf00721e59c8570c8dfe35b11b67f35c5893a98f330b8400f1407",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#13",
+      "slug": "field-cef-jsoncnf-sh-13",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 13,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "cb9bc388da30441cf008b16f5db0b8dfe4ab67b78efa1529c9a4954b17d9b59e",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#14",
+      "slug": "field-cef-jsoncnf-sh-14",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 14,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_cef_jsoncnf.sh#15",
+      "slug": "field-cef-jsoncnf-sh-15",
+      "fixture": "field_cef_jsoncnf.sh",
+      "case_number": 15,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c663ea043fef27a88b842f7b8e9420ff2ceaf6aedfdfa7e351e4d0004c70ad4f",
+      "include_directives": [],
+      "motifs": [
+        "cef"
+      ]
+    },
+    {
+      "label": "field_checkpoint-lea-terminator.sh#1",
+      "slug": "field-checkpoint-lea-terminator-sh-1",
+      "fixture": "field_checkpoint-lea-terminator.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d9dc64007433b73c8e5feb3882be22ef7372f74bf21a9e134670c292d61dbe16",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "field_checkpoint-lea-terminator.sh#2",
+      "slug": "field-checkpoint-lea-terminator-sh-2",
+      "fixture": "field_checkpoint-lea-terminator.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "73496bc2195e91a82a2c3ae91cc3870811422a04068dbdd24ae67344a94b058f",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "field_checkpoint-lea-terminator.sh#3",
+      "slug": "field-checkpoint-lea-terminator-sh-3",
+      "fixture": "field_checkpoint-lea-terminator.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b05b02fe09b77cd6dbaf23d064daae478f01297136e695be6bcb5302a067e15f",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "field_checkpoint-lea-terminator.sh#4",
+      "slug": "field-checkpoint-lea-terminator-sh-4",
+      "fixture": "field_checkpoint-lea-terminator.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a73bf3a83d49972f77d8464089ab703f7dd482b10345ac03c320ac9957cc073d",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "field_checkpoint-lea-terminator.sh#5",
+      "slug": "field-checkpoint-lea-terminator-sh-5",
+      "fixture": "field_checkpoint-lea-terminator.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3e091a0c657d4d54a3145e3eddda3ddca51024faccc11ebc807247d1d62f32af",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "field_checkpoint-lea.sh#1",
+      "slug": "field-checkpoint-lea-sh-1",
+      "fixture": "field_checkpoint-lea.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a43a77f4d14d40b118fd346e08020161f9b38f120a5e4fd995180cc7b8766842",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "field_checkpoint-lea_jsoncnf.sh#1",
+      "slug": "field-checkpoint-lea-jsoncnf-sh-1",
+      "fixture": "field_checkpoint-lea_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a43a77f4d14d40b118fd346e08020161f9b38f120a5e4fd995180cc7b8766842",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "field_checkpoint-lea_jsoncnf.sh#2",
+      "slug": "field-checkpoint-lea-jsoncnf-sh-2",
+      "fixture": "field_checkpoint-lea_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b0ab0d6842e873b64bc7cfc2049960542b54f92858becc2dbe4884da8d3df690",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "field_cisco-interface-spec-at-EOL.sh#1",
+      "slug": "field-cisco-interface-spec-at-EOL-sh-1",
+      "fixture": "field_cisco-interface-spec-at-EOL.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "256718aa5ba0d652bfc951371f04b961458872c72d46a3b045a198f98e9c64a4",
+      "include_directives": [],
+      "motifs": [
+        "cisco-interface-spec",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_cisco-interface-spec-at-EOL.sh#2",
+      "slug": "field-cisco-interface-spec-at-EOL-sh-2",
+      "fixture": "field_cisco-interface-spec-at-EOL.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "77ca6ec9e6730bd8c59b5064e3e90bbd935d6775928b93ce8be3e86b305e3f60",
+      "include_directives": [],
+      "motifs": [
+        "cisco-interface-spec",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_duration.sh#1",
+      "slug": "field-duration-sh-1",
+      "fixture": "field_duration.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6ac2454fa3671fedd99f5589b5fd24bf48e1fa02efbabb1bd97b1e18f745b9bb",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration.sh#2",
+      "slug": "field-duration-sh-2",
+      "fixture": "field_duration.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c6b13be3044cb2fafce3d5e443268a3cea9d61d799aefd6c921ef58871da8221",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration.sh#3",
+      "slug": "field-duration-sh-3",
+      "fixture": "field_duration.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "03b43cd63111ca54ac64ed83a09f21d3f06da5cbc0e55325f442d03331054fe0",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration.sh#4",
+      "slug": "field-duration-sh-4",
+      "fixture": "field_duration.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "57f197d503039e5d810d2b3c70e182cd5b50505ec019c485101bf85bbabe3667",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration.sh#5",
+      "slug": "field-duration-sh-5",
+      "fixture": "field_duration.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "15cbf0bb6a472e8a4bf3ab6fe75f2ac6af7389453b65fc4563b3cf14ec1ed1c8",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration.sh#6",
+      "slug": "field-duration-sh-6",
+      "fixture": "field_duration.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "17adf80ed47ae83b80752dc80fb219e85246af29931bc9e318e8404258736129",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration_jsoncnf.sh#1",
+      "slug": "field-duration-jsoncnf-sh-1",
+      "fixture": "field_duration_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6ac2454fa3671fedd99f5589b5fd24bf48e1fa02efbabb1bd97b1e18f745b9bb",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration_jsoncnf.sh#2",
+      "slug": "field-duration-jsoncnf-sh-2",
+      "fixture": "field_duration_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c6b13be3044cb2fafce3d5e443268a3cea9d61d799aefd6c921ef58871da8221",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration_jsoncnf.sh#3",
+      "slug": "field-duration-jsoncnf-sh-3",
+      "fixture": "field_duration_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "03b43cd63111ca54ac64ed83a09f21d3f06da5cbc0e55325f442d03331054fe0",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration_jsoncnf.sh#4",
+      "slug": "field-duration-jsoncnf-sh-4",
+      "fixture": "field_duration_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "57f197d503039e5d810d2b3c70e182cd5b50505ec019c485101bf85bbabe3667",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration_jsoncnf.sh#5",
+      "slug": "field-duration-jsoncnf-sh-5",
+      "fixture": "field_duration_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "15cbf0bb6a472e8a4bf3ab6fe75f2ac6af7389453b65fc4563b3cf14ec1ed1c8",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_duration_jsoncnf.sh#6",
+      "slug": "field-duration-jsoncnf-sh-6",
+      "fixture": "field_duration_jsoncnf.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "17adf80ed47ae83b80752dc80fb219e85246af29931bc9e318e8404258736129",
+      "include_directives": [],
+      "motifs": [
+        "duration"
+      ]
+    },
+    {
+      "label": "field_float-fmt_number.sh#1",
+      "slug": "field-float-fmt-number-sh-1",
+      "fixture": "field_float-fmt_number.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3998a71f37ef848881145bc6ad2fc8a4e8b292f77b5fd81798b838837c046a9c",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_float-fmt_number.sh#2",
+      "slug": "field-float-fmt-number-sh-2",
+      "fixture": "field_float-fmt_number.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ee75242950a0581e3fa9fb1dc25dcb0a46f93b51b96441c0dfb7dc6cf609440c",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_float-fmt_number.sh#3",
+      "slug": "field-float-fmt-number-sh-3",
+      "fixture": "field_float-fmt_number.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8351da8290eb5410e7964bce8e3a5c3349f462be4d1379dbf4fb621ff3bbecce",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_float.sh#1",
+      "slug": "field-float-sh-1",
+      "fixture": "field_float.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3998a71f37ef848881145bc6ad2fc8a4e8b292f77b5fd81798b838837c046a9c",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_float.sh#2",
+      "slug": "field-float-sh-2",
+      "fixture": "field_float.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ee75242950a0581e3fa9fb1dc25dcb0a46f93b51b96441c0dfb7dc6cf609440c",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_float.sh#3",
+      "slug": "field-float-sh-3",
+      "fixture": "field_float.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8351da8290eb5410e7964bce8e3a5c3349f462be4d1379dbf4fb621ff3bbecce",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_float_jsoncnf.sh#1",
+      "slug": "field-float-jsoncnf-sh-1",
+      "fixture": "field_float_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3998a71f37ef848881145bc6ad2fc8a4e8b292f77b5fd81798b838837c046a9c",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_float_jsoncnf.sh#2",
+      "slug": "field-float-jsoncnf-sh-2",
+      "fixture": "field_float_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ee75242950a0581e3fa9fb1dc25dcb0a46f93b51b96441c0dfb7dc6cf609440c",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_float_jsoncnf.sh#3",
+      "slug": "field-float-jsoncnf-sh-3",
+      "fixture": "field_float_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8351da8290eb5410e7964bce8e3a5c3349f462be4d1379dbf4fb621ff3bbecce",
+      "include_directives": [],
+      "motifs": [
+        "float"
+      ]
+    },
+    {
+      "label": "field_hexnumber-fmt_number.sh#1",
+      "slug": "field-hexnumber-fmt-number-sh-1",
+      "fixture": "field_hexnumber-fmt_number.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "90a3ce9a453648885d6616685ab04ffeb80b385d4494a713fa33efa6fde4b11c",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber-fmt_number.sh#2",
+      "slug": "field-hexnumber-fmt-number-sh-2",
+      "fixture": "field_hexnumber-fmt_number.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5b723cdce1207d684742824b1f11855027c89bfb5d056a136afa9d9e35a7f1d3",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber.sh#1",
+      "slug": "field-hexnumber-sh-1",
+      "fixture": "field_hexnumber.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "90a3ce9a453648885d6616685ab04ffeb80b385d4494a713fa33efa6fde4b11c",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber.sh#2",
+      "slug": "field-hexnumber-sh-2",
+      "fixture": "field_hexnumber.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5b723cdce1207d684742824b1f11855027c89bfb5d056a136afa9d9e35a7f1d3",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber_jsoncnf.sh#1",
+      "slug": "field-hexnumber-jsoncnf-sh-1",
+      "fixture": "field_hexnumber_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "90a3ce9a453648885d6616685ab04ffeb80b385d4494a713fa33efa6fde4b11c",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber_jsoncnf.sh#2",
+      "slug": "field-hexnumber-jsoncnf-sh-2",
+      "fixture": "field_hexnumber_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5b723cdce1207d684742824b1f11855027c89bfb5d056a136afa9d9e35a7f1d3",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber_range.sh#1",
+      "slug": "field-hexnumber-range-sh-1",
+      "fixture": "field_hexnumber_range.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "350e31a684589162bc767f9f7b85631fac250056b02fd4d33fa1b908b9057867",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_hexnumber_range.sh#2",
+      "slug": "field-hexnumber-range-sh-2",
+      "fixture": "field_hexnumber_range.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7799ab495e49b6178b3c80790cea1cc7e6009849a3d00e05f56af827e79de474",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_hexnumber_range.sh#3",
+      "slug": "field-hexnumber-range-sh-3",
+      "fixture": "field_hexnumber_range.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6045294538466d8b1ae3e41cd537aed5bae6f0552eae68cf9e298275b4cc1574",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_hexnumber_range.sh#4",
+      "slug": "field-hexnumber-range-sh-4",
+      "fixture": "field_hexnumber_range.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "27d83a2796c1a89a8751be2ccdb08cb007ef2e8ce41c57fddc13fa7dfc427234",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_hexnumber_range_jsoncnf.sh#1",
+      "slug": "field-hexnumber-range-jsoncnf-sh-1",
+      "fixture": "field_hexnumber_range_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "350e31a684589162bc767f9f7b85631fac250056b02fd4d33fa1b908b9057867",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber_range_jsoncnf.sh#2",
+      "slug": "field-hexnumber-range-jsoncnf-sh-2",
+      "fixture": "field_hexnumber_range_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7799ab495e49b6178b3c80790cea1cc7e6009849a3d00e05f56af827e79de474",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber_range_jsoncnf.sh#3",
+      "slug": "field-hexnumber-range-jsoncnf-sh-3",
+      "fixture": "field_hexnumber_range_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6045294538466d8b1ae3e41cd537aed5bae6f0552eae68cf9e298275b4cc1574",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_hexnumber_range_jsoncnf.sh#4",
+      "slug": "field-hexnumber-range-jsoncnf-sh-4",
+      "fixture": "field_hexnumber_range_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "27d83a2796c1a89a8751be2ccdb08cb007ef2e8ce41c57fddc13fa7dfc427234",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#1",
+      "slug": "field-ipv6-sh-1",
+      "fixture": "field_ipv6.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7d92433b4c9f17071f2d216a4f2875167c6d95d98a6efe8124a7ff76faff84f8",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#2",
+      "slug": "field-ipv6-sh-2",
+      "fixture": "field_ipv6.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "94b3467bba76bdc28e89f1cd9078b221ed04deaef1a0a7da645d8476cbcdcf13",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#3",
+      "slug": "field-ipv6-sh-3",
+      "fixture": "field_ipv6.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d910d35b35a792276a715a4070ca3ba935ff58b354628e22b00b7766e33adaed",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#4",
+      "slug": "field-ipv6-sh-4",
+      "fixture": "field_ipv6.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b6cf5bd6081fb775fc3f89927e582d7e945f955c35b73a07879d75bb4ea96a01",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#5",
+      "slug": "field-ipv6-sh-5",
+      "fixture": "field_ipv6.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "02254548435636d275633321030ff85d5af091d2e1f07fbc498f03ed4a36bce0",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#6",
+      "slug": "field-ipv6-sh-6",
+      "fixture": "field_ipv6.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "583256ee4d3216236eda3c3ed7559a577d85d2ca93bcdf8758fe2baad3736361",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#7",
+      "slug": "field-ipv6-sh-7",
+      "fixture": "field_ipv6.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "eff8e7ca506627fe15dda5e0e512fcaad70b6d520f37cc76597fdb4f2d83a1a3",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#8",
+      "slug": "field-ipv6-sh-8",
+      "fixture": "field_ipv6.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "71546855d6279ef70d20909b292c42c2dcb02cd06bde01485da52d13e304ebf4",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#9",
+      "slug": "field-ipv6-sh-9",
+      "fixture": "field_ipv6.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "13bbb551e79c18ebc081e8ceb9ad7e049581a456028cdbee93ffefca78c5ee59",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#10",
+      "slug": "field-ipv6-sh-10",
+      "fixture": "field_ipv6.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8da05dad7d218d757e16f62af142aa531bb208f4c3baeec8b88ecb631e6994cd",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#11",
+      "slug": "field-ipv6-sh-11",
+      "fixture": "field_ipv6.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3b9d25473145cce98ccd1ffe4b8abdfa1d79d436be5fa7854a854a080bac3e67",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#12",
+      "slug": "field-ipv6-sh-12",
+      "fixture": "field_ipv6.sh",
+      "case_number": 12,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "62cd435d8448dd67a40df8c1134492b3e19bc6065947fdbad58502316e9a6c2c",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#13",
+      "slug": "field-ipv6-sh-13",
+      "fixture": "field_ipv6.sh",
+      "case_number": 13,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d8ed8ddf6bebd42089aef5aab35c18bf0099ad1e414979e750824ecbea8b0147",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#14",
+      "slug": "field-ipv6-sh-14",
+      "fixture": "field_ipv6.sh",
+      "case_number": 14,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b906b47cf9b5cf3ef8c139393d10d05e80f1228c9b667381a29d0ec93655ab34",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#15",
+      "slug": "field-ipv6-sh-15",
+      "fixture": "field_ipv6.sh",
+      "case_number": 15,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "be7df70162dfb389f07e3ce856f2f53cdec5b0a0e231a96e478a44078c3e3724",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#16",
+      "slug": "field-ipv6-sh-16",
+      "fixture": "field_ipv6.sh",
+      "case_number": 16,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6db2d5a4b4209856d3249ada2dd5cebd32f82c1ad350481ed1e52524ec3efd80",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6.sh#17",
+      "slug": "field-ipv6-sh-17",
+      "fixture": "field_ipv6.sh",
+      "case_number": 17,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6f4957ab47f68f7257b61e9e53ef0115f7ea744a9594cded3ed420006754b819",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#1",
+      "slug": "field-ipv6-jsoncnf-sh-1",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7d92433b4c9f17071f2d216a4f2875167c6d95d98a6efe8124a7ff76faff84f8",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#2",
+      "slug": "field-ipv6-jsoncnf-sh-2",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "94b3467bba76bdc28e89f1cd9078b221ed04deaef1a0a7da645d8476cbcdcf13",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#3",
+      "slug": "field-ipv6-jsoncnf-sh-3",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d910d35b35a792276a715a4070ca3ba935ff58b354628e22b00b7766e33adaed",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#4",
+      "slug": "field-ipv6-jsoncnf-sh-4",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b6cf5bd6081fb775fc3f89927e582d7e945f955c35b73a07879d75bb4ea96a01",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#5",
+      "slug": "field-ipv6-jsoncnf-sh-5",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "02254548435636d275633321030ff85d5af091d2e1f07fbc498f03ed4a36bce0",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#6",
+      "slug": "field-ipv6-jsoncnf-sh-6",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "583256ee4d3216236eda3c3ed7559a577d85d2ca93bcdf8758fe2baad3736361",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#7",
+      "slug": "field-ipv6-jsoncnf-sh-7",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "eff8e7ca506627fe15dda5e0e512fcaad70b6d520f37cc76597fdb4f2d83a1a3",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#8",
+      "slug": "field-ipv6-jsoncnf-sh-8",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "71546855d6279ef70d20909b292c42c2dcb02cd06bde01485da52d13e304ebf4",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#9",
+      "slug": "field-ipv6-jsoncnf-sh-9",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "13bbb551e79c18ebc081e8ceb9ad7e049581a456028cdbee93ffefca78c5ee59",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#10",
+      "slug": "field-ipv6-jsoncnf-sh-10",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8da05dad7d218d757e16f62af142aa531bb208f4c3baeec8b88ecb631e6994cd",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#11",
+      "slug": "field-ipv6-jsoncnf-sh-11",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3b9d25473145cce98ccd1ffe4b8abdfa1d79d436be5fa7854a854a080bac3e67",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#12",
+      "slug": "field-ipv6-jsoncnf-sh-12",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 12,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "62cd435d8448dd67a40df8c1134492b3e19bc6065947fdbad58502316e9a6c2c",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#13",
+      "slug": "field-ipv6-jsoncnf-sh-13",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 13,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d8ed8ddf6bebd42089aef5aab35c18bf0099ad1e414979e750824ecbea8b0147",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#14",
+      "slug": "field-ipv6-jsoncnf-sh-14",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 14,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b906b47cf9b5cf3ef8c139393d10d05e80f1228c9b667381a29d0ec93655ab34",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#15",
+      "slug": "field-ipv6-jsoncnf-sh-15",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 15,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "be7df70162dfb389f07e3ce856f2f53cdec5b0a0e231a96e478a44078c3e3724",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#16",
+      "slug": "field-ipv6-jsoncnf-sh-16",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 16,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6db2d5a4b4209856d3249ada2dd5cebd32f82c1ad350481ed1e52524ec3efd80",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_ipv6_jsoncnf.sh#17",
+      "slug": "field-ipv6-jsoncnf-sh-17",
+      "fixture": "field_ipv6_jsoncnf.sh",
+      "case_number": 17,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6f4957ab47f68f7257b61e9e53ef0115f7ea744a9594cded3ed420006754b819",
+      "include_directives": [],
+      "motifs": [
+        "ipv6"
+      ]
+    },
+    {
+      "label": "field_json.sh#1",
+      "slug": "field-json-sh-1",
+      "fixture": "field_json.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "729910052334493505f2397a4b76983a950a5440a76dc8a8597d9d9a1c4ec7de",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#2",
+      "slug": "field-json-sh-2",
+      "fixture": "field_json.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "729910052334493505f2397a4b76983a950a5440a76dc8a8597d9d9a1c4ec7de",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#3",
+      "slug": "field-json-sh-3",
+      "fixture": "field_json.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e78dadd0f5888523f2ce73aef3260d136a1e3c1364909b2f27373e74430454a6",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#4",
+      "slug": "field-json-sh-4",
+      "fixture": "field_json.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "06647cedd1c865a48da5bc3d30919ae5b249255bda27ae14215c43af4502803a",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#5",
+      "slug": "field-json-sh-5",
+      "fixture": "field_json.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3f9189eada7a116e99f01adb270f83afd650bf42608c4f09092f61298abd3d82",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#6",
+      "slug": "field-json-sh-6",
+      "fixture": "field_json.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0bd7136515327cd928ac95a9c632476963cf6afb9234c3a9227c734dc2221dac",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#7",
+      "slug": "field-json-sh-7",
+      "fixture": "field_json.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ced9ffaa5e794a8362b42870bcbf956642b69b584d37d7354d66f6f94a3400ea",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#8",
+      "slug": "field-json-sh-8",
+      "fixture": "field_json.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3d18037148d35497a23b759fc3acdd64fe65115fc1ca6c73351bf05a2ba32d53",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#9",
+      "slug": "field-json-sh-9",
+      "fixture": "field_json.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "4cf5d98e8dbb7bad0b3cdd69037eff3c0973e3a02411e268547decaedbe0edcb",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#10",
+      "slug": "field-json-sh-10",
+      "fixture": "field_json.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c3119ad2f24680c8a3b2b3c3771788d2e13309120e5516c117c603e11ab4d3ff",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#11",
+      "slug": "field-json-sh-11",
+      "fixture": "field_json.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "729910052334493505f2397a4b76983a950a5440a76dc8a8597d9d9a1c4ec7de",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json.sh#12",
+      "slug": "field-json-sh-12",
+      "fixture": "field_json.sh",
+      "case_number": 12,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5f66259ec3c7deb31afaf433cf7af08579c5afa8e89046c65ac8e4b706c9c6cb",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#1",
+      "slug": "field-json-jsoncnf-sh-1",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "729910052334493505f2397a4b76983a950a5440a76dc8a8597d9d9a1c4ec7de",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#2",
+      "slug": "field-json-jsoncnf-sh-2",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "729910052334493505f2397a4b76983a950a5440a76dc8a8597d9d9a1c4ec7de",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#3",
+      "slug": "field-json-jsoncnf-sh-3",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e78dadd0f5888523f2ce73aef3260d136a1e3c1364909b2f27373e74430454a6",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#4",
+      "slug": "field-json-jsoncnf-sh-4",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "06647cedd1c865a48da5bc3d30919ae5b249255bda27ae14215c43af4502803a",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#5",
+      "slug": "field-json-jsoncnf-sh-5",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3f9189eada7a116e99f01adb270f83afd650bf42608c4f09092f61298abd3d82",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#6",
+      "slug": "field-json-jsoncnf-sh-6",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0bd7136515327cd928ac95a9c632476963cf6afb9234c3a9227c734dc2221dac",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#7",
+      "slug": "field-json-jsoncnf-sh-7",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ced9ffaa5e794a8362b42870bcbf956642b69b584d37d7354d66f6f94a3400ea",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#8",
+      "slug": "field-json-jsoncnf-sh-8",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3d18037148d35497a23b759fc3acdd64fe65115fc1ca6c73351bf05a2ba32d53",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#9",
+      "slug": "field-json-jsoncnf-sh-9",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "4cf5d98e8dbb7bad0b3cdd69037eff3c0973e3a02411e268547decaedbe0edcb",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#10",
+      "slug": "field-json-jsoncnf-sh-10",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c3119ad2f24680c8a3b2b3c3771788d2e13309120e5516c117c603e11ab4d3ff",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#11",
+      "slug": "field-json-jsoncnf-sh-11",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "729910052334493505f2397a4b76983a950a5440a76dc8a8597d9d9a1c4ec7de",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_jsoncnf.sh#12",
+      "slug": "field-json-jsoncnf-sh-12",
+      "fixture": "field_json_jsoncnf.sh",
+      "case_number": 12,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5f66259ec3c7deb31afaf433cf7af08579c5afa8e89046c65ac8e4b706c9c6cb",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_skipempty.sh#1",
+      "slug": "field-json-skipempty-sh-1",
+      "fixture": "field_json_skipempty.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "34fc0e1f3413b254e327ea6227d86fcc6c6bb99ccaaa55b0df421ea9097a26da",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_json_skipempty.sh#2",
+      "slug": "field-json-skipempty-sh-2",
+      "fixture": "field_json_skipempty.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "34fc0e1f3413b254e327ea6227d86fcc6c6bb99ccaaa55b0df421ea9097a26da",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#1",
+      "slug": "field-kernel-timestamp-sh-1",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "1d9200c1e3764409c9dbddaa2aad51932efbe00fcdc3b0eb4c604baaeaa2784c",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#2",
+      "slug": "field-kernel-timestamp-sh-2",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c1eaf97a0256a28e8edd13dcf5d9602cd4ffaaf09c625691ef85a6740c16e95d",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#3",
+      "slug": "field-kernel-timestamp-sh-3",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "fba14628690409d44bfe94c8aec36fa9bd3683fbd48d23301ee1e1187eae7b27",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#4",
+      "slug": "field-kernel-timestamp-sh-4",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "439b356367010eefc72beb2522044d2765e06b393d2aa61eb2a4623767372203",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#5",
+      "slug": "field-kernel-timestamp-sh-5",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "26c676e133a58eb030c4d7bd5a3d20f5ae0564afe4df4794c7df4bc2f02a64b0",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#6",
+      "slug": "field-kernel-timestamp-sh-6",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d4461eaf0ece654f5a67a34a012b1466fd454e4e92e9b46a8c3958c394a9b158",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#7",
+      "slug": "field-kernel-timestamp-sh-7",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "38444f34908b0b0fe1a4bce9d33b98e3f42b267fd00d86cdd6dc424c09b3d067",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#8",
+      "slug": "field-kernel-timestamp-sh-8",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "1740341a96384ab6a66dfcefd7813384433290d436adf8078cf4d7a2696d6291",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#9",
+      "slug": "field-kernel-timestamp-sh-9",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b8a6ed09682f9d2ba87c9b0eeb005f58dc60ab0b25cad960bb2516f7ea4d9e05",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#10",
+      "slug": "field-kernel-timestamp-sh-10",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7c258fc004062b78bc63ceb76a7380923bd47bf84be350b2e94645efbb8e61fc",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp.sh#11",
+      "slug": "field-kernel-timestamp-sh-11",
+      "fixture": "field_kernel_timestamp.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e352576e452ac51123ab7a2e4216b3aebc3993e1e1ae123ba38b9b062a18406d",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#1",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-1",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "1d9200c1e3764409c9dbddaa2aad51932efbe00fcdc3b0eb4c604baaeaa2784c",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#2",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-2",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c1eaf97a0256a28e8edd13dcf5d9602cd4ffaaf09c625691ef85a6740c16e95d",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#3",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-3",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "fba14628690409d44bfe94c8aec36fa9bd3683fbd48d23301ee1e1187eae7b27",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#4",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-4",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "439b356367010eefc72beb2522044d2765e06b393d2aa61eb2a4623767372203",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#5",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-5",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "26c676e133a58eb030c4d7bd5a3d20f5ae0564afe4df4794c7df4bc2f02a64b0",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#6",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-6",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d4461eaf0ece654f5a67a34a012b1466fd454e4e92e9b46a8c3958c394a9b158",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#7",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-7",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "38444f34908b0b0fe1a4bce9d33b98e3f42b267fd00d86cdd6dc424c09b3d067",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#8",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-8",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "1740341a96384ab6a66dfcefd7813384433290d436adf8078cf4d7a2696d6291",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#9",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-9",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b8a6ed09682f9d2ba87c9b0eeb005f58dc60ab0b25cad960bb2516f7ea4d9e05",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#10",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-10",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7c258fc004062b78bc63ceb76a7380923bd47bf84be350b2e94645efbb8e61fc",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_kernel_timestamp_jsoncnf.sh#11",
+      "slug": "field-kernel-timestamp-jsoncnf-sh-11",
+      "fixture": "field_kernel_timestamp_jsoncnf.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e352576e452ac51123ab7a2e4216b3aebc3993e1e1ae123ba38b9b062a18406d",
+      "include_directives": [],
+      "motifs": [
+        "kernel-timestamp"
+      ]
+    },
+    {
+      "label": "field_mac48.sh#1",
+      "slug": "field-mac48-sh-1",
+      "fixture": "field_mac48.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "10a5169ed7b9768fe22e4f2ec544a8383d6ce084b960295eb1605d110cebca56",
+      "include_directives": [],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "field_mac48.sh#2",
+      "slug": "field-mac48-sh-2",
+      "fixture": "field_mac48.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "63837318663660f9101249c864ed4bc6394cdb5cd37dbad9e53d5099d581deaa",
+      "include_directives": [],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "field_mac48.sh#3",
+      "slug": "field-mac48-sh-3",
+      "fixture": "field_mac48.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "9d05e91f810a101dca5744186bea1de01bf0cf1f8ffe739b87b65f933859f312",
+      "include_directives": [],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "field_mac48.sh#4",
+      "slug": "field-mac48-sh-4",
+      "fixture": "field_mac48.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "82e84cf89b5970a03532ba9560d1324e65e66b9c6610dbffe5c837b7d6630ec8",
+      "include_directives": [],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "field_mac48_jsoncnf.sh#1",
+      "slug": "field-mac48-jsoncnf-sh-1",
+      "fixture": "field_mac48_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "10a5169ed7b9768fe22e4f2ec544a8383d6ce084b960295eb1605d110cebca56",
+      "include_directives": [],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "field_mac48_jsoncnf.sh#2",
+      "slug": "field-mac48-jsoncnf-sh-2",
+      "fixture": "field_mac48_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "63837318663660f9101249c864ed4bc6394cdb5cd37dbad9e53d5099d581deaa",
+      "include_directives": [],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "field_mac48_jsoncnf.sh#3",
+      "slug": "field-mac48-jsoncnf-sh-3",
+      "fixture": "field_mac48_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "9d05e91f810a101dca5744186bea1de01bf0cf1f8ffe739b87b65f933859f312",
+      "include_directives": [],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "field_mac48_jsoncnf.sh#4",
+      "slug": "field-mac48-jsoncnf-sh-4",
+      "fixture": "field_mac48_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "82e84cf89b5970a03532ba9560d1324e65e66b9c6610dbffe5c837b7d6630ec8",
+      "include_directives": [],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "field_name_value.sh#1",
+      "slug": "field-name-value-sh-1",
+      "fixture": "field_name_value.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5abf110e958fb4a8f121fca2d0cfb9b6b4dcec44c904920e19e51490f422a425",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value.sh#2",
+      "slug": "field-name-value-sh-2",
+      "fixture": "field_name_value.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2dca2bfd26b06eab25efce9f18b084e0c62be5a7615514c433f2a6683f5e91fd",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value.sh#3",
+      "slug": "field-name-value-sh-3",
+      "fixture": "field_name_value.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "84110e3eda876fa71f6474c19b24aae4d0f0fe6ea816bd54754e93ae6a14ce45",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value.sh#4",
+      "slug": "field-name-value-sh-4",
+      "fixture": "field_name_value.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "555545bdfdff49ae1c5628e1cd910e47b8ce67bd40ca51e95c26741b4716979a",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value.sh#5",
+      "slug": "field-name-value-sh-5",
+      "fixture": "field_name_value.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "43fd645ec5861f449306b0bd3ddbf32d9ea4e2511d44d11d3d5bd93d41e2f499",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value.sh#6",
+      "slug": "field-name-value-sh-6",
+      "fixture": "field_name_value.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "82a3537ff0dbce7eec35d69edc3a189ee6f17d82f353a553f9aa96cb0be3ce89",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value.sh#7",
+      "slug": "field-name-value-sh-7",
+      "fixture": "field_name_value.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ff3faea4357e2aac124559b8fa30f73a3911e413a07efa231f9fcf334757206c",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_jsoncnf.sh#1",
+      "slug": "field-name-value-jsoncnf-sh-1",
+      "fixture": "field_name_value_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5abf110e958fb4a8f121fca2d0cfb9b6b4dcec44c904920e19e51490f422a425",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_jsoncnf.sh#2",
+      "slug": "field-name-value-jsoncnf-sh-2",
+      "fixture": "field_name_value_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2dca2bfd26b06eab25efce9f18b084e0c62be5a7615514c433f2a6683f5e91fd",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_jsoncnf.sh#3",
+      "slug": "field-name-value-jsoncnf-sh-3",
+      "fixture": "field_name_value_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "84110e3eda876fa71f6474c19b24aae4d0f0fe6ea816bd54754e93ae6a14ce45",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_jsoncnf.sh#4",
+      "slug": "field-name-value-jsoncnf-sh-4",
+      "fixture": "field_name_value_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "555545bdfdff49ae1c5628e1cd910e47b8ce67bd40ca51e95c26741b4716979a",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_jsoncnf.sh#5",
+      "slug": "field-name-value-jsoncnf-sh-5",
+      "fixture": "field_name_value_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "43fd645ec5861f449306b0bd3ddbf32d9ea4e2511d44d11d3d5bd93d41e2f499",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_jsoncnf.sh#6",
+      "slug": "field-name-value-jsoncnf-sh-6",
+      "fixture": "field_name_value_jsoncnf.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "82a3537ff0dbce7eec35d69edc3a189ee6f17d82f353a553f9aa96cb0be3ce89",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_jsoncnf.sh#7",
+      "slug": "field-name-value-jsoncnf-sh-7",
+      "fixture": "field_name_value_jsoncnf.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ff3faea4357e2aac124559b8fa30f73a3911e413a07efa231f9fcf334757206c",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#1",
+      "slug": "field-name-value-quoted-sh-1",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "1029a36411be6a6518595a94f2a0c219a0c1d57998ce857437ab80d7137b962f",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#2",
+      "slug": "field-name-value-quoted-sh-2",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6b0b323759f7f28514632c9bfe787c559f34e74c14f509378cb93a14f5f459a2",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#3",
+      "slug": "field-name-value-quoted-sh-3",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ae41b698002902a9dfb3c1fdb2cf207b564ac343d1e90875a597c6aab1d78de5",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#4",
+      "slug": "field-name-value-quoted-sh-4",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e6b967bfd5e5b2ba8676537efdb11283f006537db1722291934b776d89e2e59f",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#5",
+      "slug": "field-name-value-quoted-sh-5",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c5876c75cafe933dd9efaddcb4c2c04b05e95061b5c882371fb79aa71ba31be7",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#6",
+      "slug": "field-name-value-quoted-sh-6",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "92c57fecd84d047a1e7920ecc4a5a595dcac0e3d94d522c51816e71eca17ba78",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#7",
+      "slug": "field-name-value-quoted-sh-7",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "13c3a99ba3e9c8479041e9c6b9983f105ec38bf8fc97648f7a7275c057284495",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#8",
+      "slug": "field-name-value-quoted-sh-8",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "82a3537ff0dbce7eec35d69edc3a189ee6f17d82f353a553f9aa96cb0be3ce89",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#9",
+      "slug": "field-name-value-quoted-sh-9",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6bc2df8a59b92e2085f323f0b6911185efdb006de17db5a79a8876f6686e7c2e",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_quoted.sh#10",
+      "slug": "field-name-value-quoted-sh-10",
+      "fixture": "field_name_value_quoted.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3d486b0ee1c3a8b5abfe7c7a8351bd9b7ebfebc683716537261d97b53e8d152f",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_whitespace.sh#1",
+      "slug": "field-name-value-whitespace-sh-1",
+      "fixture": "field_name_value_whitespace.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f0a2f99d34e5c82d8a1aefbc3f9af886a2072839ead25efdaeeb6f0554221082",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_whitespace.sh#2",
+      "slug": "field-name-value-whitespace-sh-2",
+      "fixture": "field_name_value_whitespace.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b74dd30ed56b3988ff37004af512caa63cc7c8e4b996dc32b4c272caced12858",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_whitespace.sh#3",
+      "slug": "field-name-value-whitespace-sh-3",
+      "fixture": "field_name_value_whitespace.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "4e301fc86ab6a6b7011434c9caf6b3189ea888a5ad3fad9714274387ab9cbca7",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_whitespace.sh#4",
+      "slug": "field-name-value-whitespace-sh-4",
+      "fixture": "field_name_value_whitespace.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b3317589770c96a0dadade4586cef0cec608073c41af802df04b3cf008464470",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_whitespace.sh#5",
+      "slug": "field-name-value-whitespace-sh-5",
+      "fixture": "field_name_value_whitespace.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e6f869a2c8886e910f8363ed49194cc7099780c6ff7eabeff4e3c5663272aa36",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_whitespace.sh#6",
+      "slug": "field-name-value-whitespace-sh-6",
+      "fixture": "field_name_value_whitespace.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ac9561393ba653403cdc09d317cb49a182606ee4542db126be9877b8cf70375f",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_name_value_whitespace.sh#7",
+      "slug": "field-name-value-whitespace-sh-7",
+      "fixture": "field_name_value_whitespace.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "4e301fc86ab6a6b7011434c9caf6b3189ea888a5ad3fad9714274387ab9cbca7",
+      "include_directives": [],
+      "motifs": [
+        "name-value-list"
+      ]
+    },
+    {
+      "label": "field_number-fmt_number.sh#1",
+      "slug": "field-number-fmt-number-sh-1",
+      "fixture": "field_number-fmt_number.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ff314c234ce3a8bb81a01679736a48b5c19d5bab47f0cdd55e763157793fa734",
+      "include_directives": [],
+      "motifs": [
+        "number"
+      ]
+    },
+    {
+      "label": "field_number-fmt_number.sh#2",
+      "slug": "field-number-fmt-number-sh-2",
+      "fixture": "field_number-fmt_number.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ac255aa0e1b210e782044df06e09b7d4a80b05f5e8dbfcd7be1eb57fe852bb1a",
+      "include_directives": [],
+      "motifs": [
+        "number"
+      ]
+    },
+    {
+      "label": "field_number.sh#1",
+      "slug": "field-number-sh-1",
+      "fixture": "field_number.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ff314c234ce3a8bb81a01679736a48b5c19d5bab47f0cdd55e763157793fa734",
+      "include_directives": [],
+      "motifs": [
+        "number"
+      ]
+    },
+    {
+      "label": "field_number.sh#2",
+      "slug": "field-number-sh-2",
+      "fixture": "field_number.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ac255aa0e1b210e782044df06e09b7d4a80b05f5e8dbfcd7be1eb57fe852bb1a",
+      "include_directives": [],
+      "motifs": [
+        "number"
+      ]
+    },
+    {
+      "label": "field_number_maxval.sh#1",
+      "slug": "field-number-maxval-sh-1",
+      "fixture": "field_number_maxval.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b7280eccfa91c0644f46c8f4eff1f65b8cc045dc7ecf00c6c094d15333cffeef",
+      "include_directives": [],
+      "motifs": [
+        "number"
+      ]
+    },
+    {
+      "label": "field_number_maxval.sh#2",
+      "slug": "field-number-maxval-sh-2",
+      "fixture": "field_number_maxval.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ac255aa0e1b210e782044df06e09b7d4a80b05f5e8dbfcd7be1eb57fe852bb1a",
+      "include_directives": [],
+      "motifs": [
+        "number"
+      ]
+    },
+    {
+      "label": "field_op_quoted_string_escape.sh#1",
+      "slug": "field-op-quoted-string-escape-sh-1",
+      "fixture": "field_op_quoted_string_escape.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b5fd669065fd1491065387386bcbe3d8a5350772311b1483eb0e6e668fa1005e",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string"
+      ]
+    },
+    {
+      "label": "field_op_quoted_string_escape.sh#2",
+      "slug": "field-op-quoted-string-escape-sh-2",
+      "fixture": "field_op_quoted_string_escape.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "fd82531423c86d79d46a3561ad8dd416b966b5701aada094c72ba7e816865ddd",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string"
+      ]
+    },
+    {
+      "label": "field_op_quoted_string_escape.sh#3",
+      "slug": "field-op-quoted-string-escape-sh-3",
+      "fixture": "field_op_quoted_string_escape.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5fc8931d7b1a6d1ffbfeca9dece13645b4f7c58e9ce329d6dcf5ed2aadf54958",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string"
+      ]
+    },
+    {
+      "label": "field_op_quoted_string_escape.sh#4",
+      "slug": "field-op-quoted-string-escape-sh-4",
+      "fixture": "field_op_quoted_string_escape.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "98c1eb4ee93476743763878fcb96a25fbc9a175074d64004779ecb5242f645e6",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string"
+      ]
+    },
+    {
+      "label": "field_quoted_string.sh#1",
+      "slug": "field-quoted-string-sh-1",
+      "fixture": "field_quoted_string.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c4895711cd4209adc2176778181bd96fb331a5fc9b52e229599a90054bd012f1",
+      "include_directives": [],
+      "motifs": [
+        "quoted-string"
+      ]
+    },
+    {
+      "label": "field_quoted_string.sh#2",
+      "slug": "field-quoted-string-sh-2",
+      "fixture": "field_quoted_string.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "include_directives": [],
+      "motifs": [
+        "quoted-string"
+      ]
+    },
+    {
+      "label": "field_quoted_string.sh#3",
+      "slug": "field-quoted-string-sh-3",
+      "fixture": "field_quoted_string.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a4c345ee13b420f55da7173986395e56f8ace5b5c46873e971a2fa7eb4ec1d26",
+      "include_directives": [],
+      "motifs": [
+        "quoted-string"
+      ]
+    },
+    {
+      "label": "field_rest.sh#1",
+      "slug": "field-rest-sh-1",
+      "fixture": "field_rest.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f6f4ad77f6b8dfdf70f302b6df0af320ea02d3ef2c0ec95b2c162f4b1976f781",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest.sh#2",
+      "slug": "field-rest-sh-2",
+      "fixture": "field_rest.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "67390eddb4a41de8711e15236f92e45f01c3679c370108b525caac4a480316f4",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest.sh#3",
+      "slug": "field-rest-sh-3",
+      "fixture": "field_rest.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "9737a6d2a7237c4f39c051a8693099fb044a5ce7abfba82361aa6aca77f03fff",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest.sh#4",
+      "slug": "field-rest-sh-4",
+      "fixture": "field_rest.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0bda2dd0de24eef9e26cc109bf96d1b49bb0ba92bc07aac8bda41f9bf1a6eff1",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest.sh#5",
+      "slug": "field-rest-sh-5",
+      "fixture": "field_rest.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "191d646a56e9dad4c88c01522893dcdc3823a084a6f7953cb883d1d306ee1685",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest.sh#6",
+      "slug": "field-rest-sh-6",
+      "fixture": "field_rest.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "75ff0ad1d50d9c0b473ccbed91a0422fe4d7ba4a68b3c9a98f8704319167cd59",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest.sh#7",
+      "slug": "field-rest-sh-7",
+      "fixture": "field_rest.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "de24ceea47d38798e4ec68511998ca5a32e55bed8cd9433baa82131a7eba215d",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest_jsoncnf.sh#1",
+      "slug": "field-rest-jsoncnf-sh-1",
+      "fixture": "field_rest_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f6f4ad77f6b8dfdf70f302b6df0af320ea02d3ef2c0ec95b2c162f4b1976f781",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest_jsoncnf.sh#2",
+      "slug": "field-rest-jsoncnf-sh-2",
+      "fixture": "field_rest_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "67390eddb4a41de8711e15236f92e45f01c3679c370108b525caac4a480316f4",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest_jsoncnf.sh#3",
+      "slug": "field-rest-jsoncnf-sh-3",
+      "fixture": "field_rest_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "9737a6d2a7237c4f39c051a8693099fb044a5ce7abfba82361aa6aca77f03fff",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest_jsoncnf.sh#4",
+      "slug": "field-rest-jsoncnf-sh-4",
+      "fixture": "field_rest_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0bda2dd0de24eef9e26cc109bf96d1b49bb0ba92bc07aac8bda41f9bf1a6eff1",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest_jsoncnf.sh#5",
+      "slug": "field-rest-jsoncnf-sh-5",
+      "fixture": "field_rest_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "191d646a56e9dad4c88c01522893dcdc3823a084a6f7953cb883d1d306ee1685",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest_jsoncnf.sh#6",
+      "slug": "field-rest-jsoncnf-sh-6",
+      "fixture": "field_rest_jsoncnf.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "75ff0ad1d50d9c0b473ccbed91a0422fe4d7ba4a68b3c9a98f8704319167cd59",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rest_jsoncnf.sh#7",
+      "slug": "field-rest-jsoncnf-sh-7",
+      "fixture": "field_rest_jsoncnf.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "de24ceea47d38798e4ec68511998ca5a32e55bed8cd9433baa82131a7eba215d",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "ipv4",
+        "number",
+        "rest"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh#1",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-ms-sh-1",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "67fd84b943724628403e8d589ea352729fde15921ef15f6f54619f077c8a6983",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh#2",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-ms-sh-2",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "9110eb6623dde38041f13890e5c977ba2cfceeae2086d40125314ddb5a8810fc",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh#3",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-ms-sh-3",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c0cf310236eaf26cf9403bf22df0c79f15a3e662eac448f32e0c99cdf6986716",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh#4",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-ms-sh-4",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a4c087931c295d1cb7f5656a07f3dd07d504f1b4b564b59d8c1f5bfee8885e95",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh#5",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-ms-sh-5",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "096ff7f6d0aef80133625736098a76da36f7d94615df12218215c666d9368afd",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh#6",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-ms-sh-6",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "580d92ef45a0a52df3774146fa0b5a9de96d6c8dfc4c24838e46ed8ab159d1e8",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh#7",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-ms-sh-7",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix-ms.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "43c20d9623791c5b856da2e663719b63c6decdd6743cc182ed4e167bc16999a6",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix.sh#1",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-sh-1",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "67fd84b943724628403e8d589ea352729fde15921ef15f6f54619f077c8a6983",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix.sh#2",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-sh-2",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "719b40e474180c117555e1cce57aa2e4c282ef21831a4ca97da21dc1310c6892",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_rfc5424timestamp-fmt_timestamp-unix.sh#3",
+      "slug": "field-rfc5424timestamp-fmt-timestamp-unix-sh-3",
+      "fixture": "field_rfc5424timestamp-fmt_timestamp-unix.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "43c20d9623791c5b856da2e663719b63c6decdd6743cc182ed4e167bc16999a6",
+      "include_directives": [],
+      "motifs": [
+        "date-rfc5424"
+      ]
+    },
+    {
+      "label": "field_string.sh#1",
+      "slug": "field-string-sh-1",
+      "fixture": "field_string.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0b6bf6157e87d9cf80c6b783d976eed0caa2fdcd02ed016994dae4bdf09e6cb1",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "field_string.sh#2",
+      "slug": "field-string-sh-2",
+      "fixture": "field_string.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "16f0b59c13a7c42fbf07b21d1bdcd0743dec99c0536bb1eeda3042bd534651cd",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "field_string.sh#3",
+      "slug": "field-string-sh-3",
+      "fixture": "field_string.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6f32b8496b41326fb174ad5ebd0f253cfa3be6ab8f51be48fe895c35510c134f",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "field_string.sh#4",
+      "slug": "field-string-sh-4",
+      "fixture": "field_string.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c6430699aa8f9d4ce6b5a2c81519c4781fd4b42d4ffdcad1270f278ebe991044",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "field_string.sh#5",
+      "slug": "field-string-sh-5",
+      "fixture": "field_string.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a9b4b77fa10fefc45a7b65acdb6968c956c51e035c410b9a84764cf6db1adab1",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "field_string.sh#6",
+      "slug": "field-string-sh-6",
+      "fixture": "field_string.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0b6bf6157e87d9cf80c6b783d976eed0caa2fdcd02ed016994dae4bdf09e6cb1",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string.sh#7",
+      "slug": "field-string-sh-7",
+      "fixture": "field_string.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "16f0b59c13a7c42fbf07b21d1bdcd0743dec99c0536bb1eeda3042bd534651cd",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string.sh#8",
+      "slug": "field-string-sh-8",
+      "fixture": "field_string.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0b6bf6157e87d9cf80c6b783d976eed0caa2fdcd02ed016994dae4bdf09e6cb1",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string.sh#9",
+      "slug": "field-string-sh-9",
+      "fixture": "field_string.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f316cd1b3d811d85a308ec01c5205c52901a29ad6093df12b603ef1cb8b5a91c",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string.sh#10",
+      "slug": "field-string-sh-10",
+      "fixture": "field_string.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "74f4316d5c98c400ccafe5aae6d99b4ebbe11efeb51b2d30eb7bbcadadd6daab",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_dashIsEmpty.sh#1",
+      "slug": "field-string-dashIsEmpty-sh-1",
+      "fixture": "field_string_dashIsEmpty.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0933fb667296882d8c45abca58ac52e01c8db6f19e626b30de88f0f4ed143ec5",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "field_string_dashIsEmpty.sh#2",
+      "slug": "field-string-dashIsEmpty-sh-2",
+      "fixture": "field_string_dashIsEmpty.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0933fb667296882d8c45abca58ac52e01c8db6f19e626b30de88f0f4ed143ec5",
+      "include_directives": [],
+      "motifs": [
+        "quoted-string"
+      ]
+    },
+    {
+      "label": "field_string_doc_sample_lazy.sh#1",
+      "slug": "field-string-doc-sample-lazy-sh-1",
+      "fixture": "field_string_doc_sample_lazy.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "24acdc514cf5d3a98acdfa6d55fd57386c9b1ce236d56063eb924c56f335c578",
+      "include_directives": [],
+      "motifs": [
+        "rest"
+      ]
+    },
+    {
+      "label": "field_string_lazy_matching.sh#1",
+      "slug": "field-string-lazy-matching-sh-1",
+      "fixture": "field_string_lazy_matching.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "51702cc0e46ab3f75e221967462eaa2d3fce34881bc3f4cec29acb82fecc6fc7",
+      "include_directives": [],
+      "motifs": [
+        "rest",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_string_lazy_matching.sh#2",
+      "slug": "field-string-lazy-matching-sh-2",
+      "fixture": "field_string_lazy_matching.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d6647658d35bbc03f40969eb42502664b74519eaf7e8318113103135d180093a",
+      "include_directives": [],
+      "motifs": [
+        "rest",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_string_perm_chars.sh#1",
+      "slug": "field-string-perm-chars-sh-1",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "55265f7dc05e1f008620c1a4cb2a0cf36416fb79fde977323ec3a8f3b28555ec",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#2",
+      "slug": "field-string-perm-chars-sh-2",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "40ff875e29323e949399d8abd8575933d49e7f919c821317b749f742f569886b",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#3",
+      "slug": "field-string-perm-chars-sh-3",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0b7636626cb177e803ac0eebb5f5e6ced643ead45678767a286e02e3fbdbd230",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#4",
+      "slug": "field-string-perm-chars-sh-4",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ab10cf26a7da989dd2e993712b9ed7f736e40e7ee7f30fc948a3ea57be94766a",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#5",
+      "slug": "field-string-perm-chars-sh-5",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "55265f7dc05e1f008620c1a4cb2a0cf36416fb79fde977323ec3a8f3b28555ec",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#6",
+      "slug": "field-string-perm-chars-sh-6",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7c7b22d1c164bdbc0cf1c749eedd3a13c133b74ebc58361fc30f7ea1275c0c88",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#7",
+      "slug": "field-string-perm-chars-sh-7",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6c76b69a58edea3c523ba22afdae2dc0aadb027d9ad7a3ce59b1615e1ca20a17",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#8",
+      "slug": "field-string-perm-chars-sh-8",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "753d482b2a00f2f18f281fc64ce9e91e1b1226732403968289d0776780f8fcd1",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#9",
+      "slug": "field-string-perm-chars-sh-9",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "6c76b69a58edea3c523ba22afdae2dc0aadb027d9ad7a3ce59b1615e1ca20a17",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#10",
+      "slug": "field-string-perm-chars-sh-10",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "753d482b2a00f2f18f281fc64ce9e91e1b1226732403968289d0776780f8fcd1",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_string_perm_chars.sh#11",
+      "slug": "field-string-perm-chars-sh-11",
+      "fixture": "field_string_perm_chars.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "45a8305dcd6623d24625e915a19f86defd9df11661bf54b66b7d3b02f1815e18",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "field_v2-iptables.sh#1",
+      "slug": "field-v2-iptables-sh-1",
+      "fixture": "field_v2-iptables.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5d6e9c1d95fa14b0b43b71a28bca080da3b0258d76cf3403e4f64b09ffebece1",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#1",
+      "slug": "field-v2-iptables-jsoncnf-sh-1",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5d6e9c1d95fa14b0b43b71a28bca080da3b0258d76cf3403e4f64b09ffebece1",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#2",
+      "slug": "field-v2-iptables-jsoncnf-sh-2",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "00faef97270092b1844b86af500642b2d75c40964450045a95647226257810c7",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#3",
+      "slug": "field-v2-iptables-jsoncnf-sh-3",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2d604c361716828c459a6183b6f520000a58195e5c127229738091db4f617ff2",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#4",
+      "slug": "field-v2-iptables-jsoncnf-sh-4",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c46ff839705ed3aef1d45aec6838ddcc0c57a56624359c0648ff357365f57b74",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#5",
+      "slug": "field-v2-iptables-jsoncnf-sh-5",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f9cd86079c170950fccf58987b08005c1a284bf2ed32fd7e17912217e1cd7137",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#6",
+      "slug": "field-v2-iptables-jsoncnf-sh-6",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "1d1936001300aa67d78edcbc11e632ff8035f2a081f77770a4b3855ab7ed8da3",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#7",
+      "slug": "field-v2-iptables-jsoncnf-sh-7",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "0a9b2a8a9ef2c059828685168b8553a6726d125a495ef6bad909483f45b26aec",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#8",
+      "slug": "field-v2-iptables-jsoncnf-sh-8",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 8,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "84a2636b69212655734c891e6caf3a43d078bee4a2ab4d919dc4549657140733",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#9",
+      "slug": "field-v2-iptables-jsoncnf-sh-9",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 9,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "bbc66240c2fac210b084d2291fff051fd3fbca51407ad067a0dbba40f48fc59a",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#10",
+      "slug": "field-v2-iptables-jsoncnf-sh-10",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 10,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "41f37219b6248d2713de4fcdcfd07ee80df5a0db0d6ae862efed50c3352a8ebc",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#11",
+      "slug": "field-v2-iptables-jsoncnf-sh-11",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 11,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "a20ec0d96d3eeeb8e1e9c64e7ae541c3d9f3d477ba5a8d1f2223030fe52d047d",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#12",
+      "slug": "field-v2-iptables-jsoncnf-sh-12",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 12,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "f740fcff7562ddfe243ea0183818642e13e09a6e8dd6786b869508977eeb8557",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#13",
+      "slug": "field-v2-iptables-jsoncnf-sh-13",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 13,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5a58743f8c0bac4cf4f0ed30310da1b4b7ed23e1600d946add428c8977eb36a7",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_v2-iptables_jsoncnf.sh#14",
+      "slug": "field-v2-iptables-jsoncnf-sh-14",
+      "fixture": "field_v2-iptables_jsoncnf.sh",
+      "case_number": 14,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "20dc9682e86467f67681f12f57aa9e306bf01158f39bdf708f52d241d5c42595",
+      "include_directives": [],
+      "motifs": [
+        "v2-iptables"
+      ]
+    },
+    {
+      "label": "field_whitespace.sh#1",
+      "slug": "field-whitespace-sh-1",
+      "fixture": "field_whitespace.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "37da53ae3cbec314da3824bbaf444ab2a880acc7f5a7304097179f9d23853d05",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_whitespace.sh#2",
+      "slug": "field-whitespace-sh-2",
+      "fixture": "field_whitespace.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8f56b437be833e281bc21b8d0bb0c843cd1a9e8596efe3e80e36f884314ed1eb",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_whitespace.sh#3",
+      "slug": "field-whitespace-sh-3",
+      "fixture": "field_whitespace.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "18310f6d5ed85616c4e94dfa3550c85647897e6896e87af70a4d7ace4b74b17a",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_whitespace.sh#4",
+      "slug": "field-whitespace-sh-4",
+      "fixture": "field_whitespace.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c607bbafdb5827dd85b27743efcb98b54411dfa6c06580ae201bc149558a9d1e",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_whitespace_jsoncnf.sh#1",
+      "slug": "field-whitespace-jsoncnf-sh-1",
+      "fixture": "field_whitespace_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "37da53ae3cbec314da3824bbaf444ab2a880acc7f5a7304097179f9d23853d05",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_whitespace_jsoncnf.sh#2",
+      "slug": "field-whitespace-jsoncnf-sh-2",
+      "fixture": "field_whitespace_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8f56b437be833e281bc21b8d0bb0c843cd1a9e8596efe3e80e36f884314ed1eb",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_whitespace_jsoncnf.sh#3",
+      "slug": "field-whitespace-jsoncnf-sh-3",
+      "fixture": "field_whitespace_jsoncnf.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "18310f6d5ed85616c4e94dfa3550c85647897e6896e87af70a4d7ace4b74b17a",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "field_whitespace_jsoncnf.sh#4",
+      "slug": "field-whitespace-jsoncnf-sh-4",
+      "fixture": "field_whitespace_jsoncnf.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c607bbafdb5827dd85b27743efcb98b54411dfa6c06580ae201bc149558a9d1e",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string",
+        "whitespace"
+      ]
+    },
+    {
+      "label": "include.sh#1",
+      "slug": "include-sh-1",
+      "fixture": "include.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [
+        "inc.rulebase"
+      ],
+      "cross_file_type_references": [],
+      "message_sha256": "10a5169ed7b9768fe22e4f2ec544a8383d6ce084b960295eb1605d110cebca56",
+      "include_directives": [
+        "inc.rulebase"
+      ],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "include_RULEBASES.sh#1",
+      "slug": "include-RULEBASES-sh-1",
+      "fixture": "include_RULEBASES.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [
+        "inc.rulebase"
+      ],
+      "cross_file_type_references": [],
+      "message_sha256": "10a5169ed7b9768fe22e4f2ec544a8383d6ce084b960295eb1605d110cebca56",
+      "include_directives": [
+        "inc.rulebase"
+      ],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "include_RULEBASES.sh#2",
+      "slug": "include-RULEBASES-sh-2",
+      "fixture": "include_RULEBASES.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [
+        "inc.rulebase"
+      ],
+      "cross_file_type_references": [],
+      "message_sha256": "10a5169ed7b9768fe22e4f2ec544a8383d6ce084b960295eb1605d110cebca56",
+      "include_directives": [
+        "inc.rulebase"
+      ],
+      "motifs": [
+        "mac48"
+      ]
+    },
+    {
+      "label": "literal.sh#1",
+      "slug": "literal-sh-1",
+      "fixture": "literal.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+      "include_directives": [],
+      "motifs": [
+        "literal"
+      ]
+    },
+    {
+      "label": "literal.sh#2",
+      "slug": "literal-sh-2",
+      "fixture": "literal.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ec2e3f543b6aa5bcfa2945da0ef120c5f4f29d1b7102ec1b0a845d119a176bf8",
+      "include_directives": [],
+      "motifs": [
+        "literal"
+      ]
+    },
+    {
+      "label": "literal.sh#3",
+      "slug": "literal-sh-3",
+      "fixture": "literal.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "cc7738720ccbd092e659347613193acedcc0359ce4125d17ae95a96c4409a578",
+      "include_directives": [],
+      "motifs": [
+        "literal"
+      ]
+    },
+    {
+      "label": "literal.sh#4",
+      "slug": "literal-sh-4",
+      "fixture": "literal.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7cf644d1fa4dc9272031d7db8b90d89a84d9e269d6d4b5b7eb1c55b1e1f95d37",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "missing_line_ending.sh#1",
+      "slug": "missing-line-ending-sh-1",
+      "fixture": "missing_line_ending.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "10a5169ed7b9768fe22e4f2ec544a8383d6ce084b960295eb1605d110cebca56",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "missing_line_ending.sh#2",
+      "slug": "missing-line-ending-sh-2",
+      "fixture": "missing_line_ending.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "63837318663660f9101249c864ed4bc6394cdb5cd37dbad9e53d5099d581deaa",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "missing_line_ending.sh#3",
+      "slug": "missing-line-ending-sh-3",
+      "fixture": "missing_line_ending.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "9d05e91f810a101dca5744186bea1de01bf0cf1f8ffe739b87b65f933859f312",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "missing_line_ending.sh#4",
+      "slug": "missing-line-ending-sh-4",
+      "fixture": "missing_line_ending.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "82e84cf89b5970a03532ba9560d1324e65e66b9c6610dbffe5c837b7d6630ec8",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "names.sh#1",
+      "slug": "names-sh-1",
+      "fixture": "names.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7cf644d1fa4dc9272031d7db8b90d89a84d9e269d6d4b5b7eb1c55b1e1f95d37",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "names.sh#2",
+      "slug": "names-sh-2",
+      "fixture": "names.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7cf644d1fa4dc9272031d7db8b90d89a84d9e269d6d4b5b7eb1c55b1e1f95d37",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "names.sh#3",
+      "slug": "names-sh-3",
+      "fixture": "names.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7cf644d1fa4dc9272031d7db8b90d89a84d9e269d6d4b5b7eb1c55b1e1f95d37",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "names.sh#4",
+      "slug": "names-sh-4",
+      "fixture": "names.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7cf644d1fa4dc9272031d7db8b90d89a84d9e269d6d4b5b7eb1c55b1e1f95d37",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber",
+        "number"
+      ]
+    },
+    {
+      "label": "parser_LF_jsoncnf.sh#1",
+      "slug": "parser-LF-jsoncnf-sh-1",
+      "fixture": "parser_LF_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "90a3ce9a453648885d6616685ab04ffeb80b385d4494a713fa33efa6fde4b11c",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "parser_LF_jsoncnf.sh#2",
+      "slug": "parser-LF-jsoncnf-sh-2",
+      "fixture": "parser_LF_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5b723cdce1207d684742824b1f11855027c89bfb5d056a136afa9d9e35a7f1d3",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "parser_eof_hardening.sh#1",
+      "slug": "parser-eof-hardening-sh-1",
+      "fixture": "parser_eof_hardening.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "parser_eof_hardening.sh#2",
+      "slug": "parser-eof-hardening-sh-2",
+      "fixture": "parser_eof_hardening.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "695252f664b93b2375fc1738693a32a19e8c722fe14e81a3d80cc5b85a923da0",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "parser_eof_hardening.sh#3",
+      "slug": "parser-eof-hardening-sh-3",
+      "fixture": "parser_eof_hardening.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "49a64717d5d4cb19952e6eac2946415cf6879adacf9908e7d872332d32c6e684",
+      "include_directives": [],
+      "motifs": [
+        "json"
+      ]
+    },
+    {
+      "label": "parser_eof_hardening.sh#4",
+      "slug": "parser-eof-hardening-sh-4",
+      "fixture": "parser_eof_hardening.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "695252f664b93b2375fc1738693a32a19e8c722fe14e81a3d80cc5b85a923da0",
+      "include_directives": [],
+      "motifs": [
+        "op-quoted-string"
+      ]
+    },
+    {
+      "label": "parser_eof_hardening.sh#5",
+      "slug": "parser-eof-hardening-sh-5",
+      "fixture": "parser_eof_hardening.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "e78136251d7b418ea53ac2fd6f6a15570bbf9916d53438f04c412b656b325637",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "parser_eof_hardening.sh#6",
+      "slug": "parser-eof-hardening-sh-6",
+      "fixture": "parser_eof_hardening.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "012013bc4244d24245dfa628da20a7a13ccf3f8fc812bb697d23ee9c10c2ec03",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "parser_eof_hardening.sh#7",
+      "slug": "parser-eof-hardening-sh-7",
+      "fixture": "parser_eof_hardening.sh",
+      "case_number": 7,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "fa3bda40423c190c26842104fc6c4d4e4c243386595bfcfe31140f94375cfef1",
+      "include_directives": [],
+      "motifs": [
+        "checkpoint-lea"
+      ]
+    },
+    {
+      "label": "parser_prios.sh#1",
+      "slug": "parser-prios-sh-1",
+      "fixture": "parser_prios.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "10a5169ed7b9768fe22e4f2ec544a8383d6ce084b960295eb1605d110cebca56",
+      "include_directives": [],
+      "motifs": [
+        "mac48",
+        "rest"
+      ]
+    },
+    {
+      "label": "parser_prios.sh#2",
+      "slug": "parser-prios-sh-2",
+      "fixture": "parser_prios.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "63837318663660f9101249c864ed4bc6394cdb5cd37dbad9e53d5099d581deaa",
+      "include_directives": [],
+      "motifs": [
+        "mac48",
+        "rest"
+      ]
+    },
+    {
+      "label": "parser_prios.sh#3",
+      "slug": "parser-prios-sh-3",
+      "fixture": "parser_prios.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "9d05e91f810a101dca5744186bea1de01bf0cf1f8ffe739b87b65f933859f312",
+      "include_directives": [],
+      "motifs": [
+        "mac48",
+        "rest"
+      ]
+    },
+    {
+      "label": "parser_prios.sh#4",
+      "slug": "parser-prios-sh-4",
+      "fixture": "parser_prios.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "10a5169ed7b9768fe22e4f2ec544a8383d6ce084b960295eb1605d110cebca56",
+      "include_directives": [],
+      "motifs": [
+        "mac48",
+        "rest"
+      ],
+      "sets_explicit_priority": true
+    },
+    {
+      "label": "parser_prios.sh#5",
+      "slug": "parser-prios-sh-5",
+      "fixture": "parser_prios.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "63837318663660f9101249c864ed4bc6394cdb5cd37dbad9e53d5099d581deaa",
+      "include_directives": [],
+      "motifs": [
+        "mac48",
+        "rest"
+      ],
+      "sets_explicit_priority": true
+    },
+    {
+      "label": "parser_prios.sh#6",
+      "slug": "parser-prios-sh-6",
+      "fixture": "parser_prios.sh",
+      "case_number": 6,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "9d05e91f810a101dca5744186bea1de01bf0cf1f8ffe739b87b65f933859f312",
+      "include_directives": [],
+      "motifs": [
+        "mac48",
+        "rest"
+      ],
+      "sets_explicit_priority": true
+    },
+    {
+      "label": "parser_whitespace_jsoncnf.sh#1",
+      "slug": "parser-whitespace-jsoncnf-sh-1",
+      "fixture": "parser_whitespace_jsoncnf.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "90a3ce9a453648885d6616685ab04ffeb80b385d4494a713fa33efa6fde4b11c",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "parser_whitespace_jsoncnf.sh#2",
+      "slug": "parser-whitespace-jsoncnf-sh-2",
+      "fixture": "parser_whitespace_jsoncnf.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5b723cdce1207d684742824b1f11855027c89bfb5d056a136afa9d9e35a7f1d3",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber"
+      ]
+    },
+    {
+      "label": "repeat_alternative_nested.sh#1",
+      "slug": "repeat-alternative-nested-sh-1",
+      "fixture": "repeat_alternative_nested.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "4d7690cd0dc4d1318e63ac9a882f0cfa8034b013ce19c24abe619c70b061e0a4",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "literal",
+        "number",
+        "repeat"
+      ]
+    },
+    {
+      "label": "repeat_alternative_nested.sh#2",
+      "slug": "repeat-alternative-nested-sh-2",
+      "fixture": "repeat_alternative_nested.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "efcba28a30c844edfaee0bcaadda933196c0bfdb3335d1cb70f1de6a3e5f4f2d",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "literal",
+        "number",
+        "repeat"
+      ]
+    },
+    {
+      "label": "repeat_alternative_nested.sh#3",
+      "slug": "repeat-alternative-nested-sh-3",
+      "fixture": "repeat_alternative_nested.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7448a0e68d15cc6011f068f73d10732f0a29001d0c081ab216f616f40152f767",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "hexnumber",
+        "literal",
+        "number",
+        "repeat"
+      ]
+    },
+    {
+      "label": "repeat_fail_on_duplicate.sh#1",
+      "slug": "repeat-fail-on-duplicate-sh-1",
+      "fixture": "repeat_fail_on_duplicate.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "bfc71b7b00b918f872d95236e895355a2ef19a6c54213433aa8a3638a30b01ca",
+      "include_directives": [],
+      "motifs": [
+        "literal",
+        "number",
+        "repeat"
+      ]
+    },
+    {
+      "label": "repeat_mismatch_in_while.sh#1",
+      "slug": "repeat-mismatch-in-while-sh-1",
+      "fixture": "repeat_mismatch_in_while.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2d68e004c0bd38e6a58c399ef27ae7b0bad4365277967bb885cd059ba6c831b3",
+      "include_directives": [],
+      "motifs": [
+        "cisco-interface-spec",
+        "date-rfc3164",
+        "literal",
+        "word"
+      ]
+    },
+    {
+      "label": "repeat_mismatch_in_while.sh#2",
+      "slug": "repeat-mismatch-in-while-sh-2",
+      "fixture": "repeat_mismatch_in_while.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2d68e004c0bd38e6a58c399ef27ae7b0bad4365277967bb885cd059ba6c831b3",
+      "include_directives": [],
+      "motifs": [
+        "cisco-interface-spec",
+        "date-rfc3164",
+        "literal",
+        "word"
+      ]
+    },
+    {
+      "label": "repeat_mismatch_in_while.sh#3",
+      "slug": "repeat-mismatch-in-while-sh-3",
+      "fixture": "repeat_mismatch_in_while.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "26659fa3c062692f814bee3399c057a541ed24018db2467b68a7fe4049e4d53a",
+      "include_directives": [],
+      "motifs": [
+        "cisco-interface-spec",
+        "date-rfc3164",
+        "literal",
+        "word"
+      ]
+    },
+    {
+      "label": "repeat_name_dot.sh#1",
+      "slug": "repeat-name-dot-sh-1",
+      "fixture": "repeat_name_dot.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b1d2450b59521dd456751aeca79b1fb0360e76925ff0048aab298f3a8f0bec9f",
+      "include_directives": [],
+      "motifs": [
+        "literal",
+        "number",
+        "repeat",
+        "word"
+      ]
+    },
+    {
+      "label": "repeat_named_while_segfault.sh#1",
+      "slug": "repeat-named-while-segfault-sh-1",
+      "fixture": "repeat_named_while_segfault.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "563394afd050832afd5fa5ec6234fd84890dabc5c47c449a5f93d5b7d30da879",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "number",
+        "repeat"
+      ]
+    },
+    {
+      "label": "repeat_simple.sh#1",
+      "slug": "repeat-simple-sh-1",
+      "fixture": "repeat_simple.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "b1d2450b59521dd456751aeca79b1fb0360e76925ff0048aab298f3a8f0bec9f",
+      "include_directives": [],
+      "motifs": [
+        "literal",
+        "number",
+        "repeat",
+        "word"
+      ]
+    },
+    {
+      "label": "repeat_very_simple.sh#1",
+      "slug": "repeat-very-simple-sh-1",
+      "fixture": "repeat_very_simple.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "976e4562f5c8c4bdce06cb9f5aee7d28cf2e1addc20f08bbf47bacdd0fdb129b",
+      "include_directives": [],
+      "motifs": [
+        "literal",
+        "number",
+        "repeat",
+        "word"
+      ]
+    },
+    {
+      "label": "repeat_while_alternative.sh#1",
+      "slug": "repeat-while-alternative-sh-1",
+      "fixture": "repeat_while_alternative.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "07a99d2ee25f7dfa96a45f2adab5b4a2f40745ffd76d4337c4a9b6373ff80570",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "literal",
+        "number",
+        "repeat",
+        "word"
+      ]
+    },
+    {
+      "label": "rule_last_str_long.sh#1",
+      "slug": "rule-last-str-long-sh-1",
+      "fixture": "rule_last_str_long.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "rule_last_str_long.sh#2",
+      "slug": "rule-last-str-long-sh-2",
+      "fixture": "rule_last_str_long.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5161ac01009da28239ed051c5d2f254c38a149f477b875e14bf2d3d0aeb75dc6",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "rule_last_str_long.sh#3",
+      "slug": "rule-last-str-long-sh-3",
+      "fixture": "rule_last_str_long.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8ccdceab7ce7566792e130a2c8bff8f200715a8eddb1c9ce41a4691e157b6dfc",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "rule_last_str_long.sh#4",
+      "slug": "rule-last-str-long-sh-4",
+      "fixture": "rule_last_str_long.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "118e598407cc0a2c11cfa2d3ce3f95f21a8e4edbb9d66d33984497d86d357a0b",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "rule_last_str_long.sh#5",
+      "slug": "rule-last-str-long-sh-5",
+      "fixture": "rule_last_str_long.sh",
+      "case_number": 5,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "71b0d202672c2a896fab39183ca562d403191f5de3593745dd731150bf27790f",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "rule_last_str_short.sh#1",
+      "slug": "rule-last-str-short-sh-1",
+      "fixture": "rule_last_str_short.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "473287f8298dba7163a897908958f7c0eae733e25d2e027992ea2edc9bed2fa8",
+      "include_directives": [],
+      "motifs": [
+        "string"
+      ]
+    },
+    {
+      "label": "runaway_rule.sh#1",
+      "slug": "runaway-rule-sh-1",
+      "fixture": "runaway_rule.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3a6eb0790f39ac87c94f3856b2dd2c5d110e6811602261a9a923d3bb23adc8b7",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "runaway_rule_comment.sh#1",
+      "slug": "runaway-rule-comment-sh-1",
+      "fixture": "runaway_rule_comment.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "3a6eb0790f39ac87c94f3856b2dd2c5d110e6811602261a9a923d3bb23adc8b7",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "seq_simple.sh#1",
+      "slug": "seq-simple-sh-1",
+      "fixture": "seq_simple.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7cf644d1fa4dc9272031d7db8b90d89a84d9e269d6d4b5b7eb1c55b1e1f95d37",
+      "include_directives": [],
+      "motifs": [
+        "hexnumber",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "strict_prefix_actual_sample1.sh#1",
+      "slug": "strict-prefix-actual-sample1-sh-1",
+      "fixture": "strict_prefix_actual_sample1.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "7b6e3f8ad4c59ac9431dcc900809a0733b250443d81917963c899b46b12aca2e",
+      "include_directives": [],
+      "motifs": [
+        "char-to",
+        "date-rfc3164",
+        "number",
+        "word"
+      ]
+    },
+    {
+      "label": "strict_prefix_matching_1.sh#1",
+      "slug": "strict-prefix-matching-1-sh-1",
+      "fixture": "strict_prefix_matching_1.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "53f0a6318cf5256d6a6f94f91170e2e52343029bbfe35e71633206e3d1288882",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "strict_prefix_matching_1.sh#2",
+      "slug": "strict-prefix-matching-1-sh-2",
+      "fixture": "strict_prefix_matching_1.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "c4cb1295c0d15dc717254fdefd4d61d9bd6834c418d9c3da96f69e5afa0edee0",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "strict_prefix_matching_2.sh#1",
+      "slug": "strict-prefix-matching-2-sh-1",
+      "fixture": "strict_prefix_matching_2.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ab69d26a58e0be6bc46b7ef3597b09ca6105e5a8991337ead8d96e27cc356124",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "strict_prefix_matching_2.sh#2",
+      "slug": "strict-prefix-matching-2-sh-2",
+      "fixture": "strict_prefix_matching_2.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "dab9dea68a81d3f874fbac3e82c0b1c76ea9e416ed1225ec610b5fb4ae23eb18",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "strict_prefix_matching_2.sh#3",
+      "slug": "strict-prefix-matching-2-sh-3",
+      "fixture": "strict_prefix_matching_2.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "443a3a6e45a31312624e7ae96543cfa8a5473716fbfa72b57528173145a4721f",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "usrdef_actual1.sh#1",
+      "slug": "usrdef-actual1-sh-1",
+      "fixture": "usrdef_actual1.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "be8dac7335501c6b2af3ba05bf89ea5dbe0465965962abad7db3660e4382fece",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "char-to",
+        "ipv4",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "usrdef_actual1.sh#2",
+      "slug": "usrdef-actual1-sh-2",
+      "fixture": "usrdef_actual1.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "ca16a147cf34af9231860ee800c3fa6ea7a5baeb89dddf77d008b56464f00ecd",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "char-to",
+        "ipv4",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "usrdef_actual1.sh#3",
+      "slug": "usrdef-actual1-sh-3",
+      "fixture": "usrdef_actual1.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "dc934e44fd0600f92c05ebb1ee04efcf89d550af056161d63e2135cb257c5e61",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "char-to",
+        "ipv4",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "usrdef_actual1.sh#4",
+      "slug": "usrdef-actual1-sh-4",
+      "fixture": "usrdef_actual1.sh",
+      "case_number": 4,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "06342f09efe04e46b172eed7ceeb666aba284a7e97a482af6734b2b556065576",
+      "include_directives": [],
+      "motifs": [
+        "alternative",
+        "char-to",
+        "ipv4",
+        "literal",
+        "number"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr.sh#1",
+      "slug": "usrdef-ipaddr-sh-1",
+      "fixture": "usrdef_ipaddr.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "221de811b3a08897fc6f783eeceea668a6e4f688eda20b022877fb039cbf94dd",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr.sh#2",
+      "slug": "usrdef-ipaddr-sh-2",
+      "fixture": "usrdef_ipaddr.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5e75598b63c362680d95ad5efaecc730c9120efd44b9ee3b425f45973fbd5f1a",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr.sh#3",
+      "slug": "usrdef-ipaddr-sh-3",
+      "fixture": "usrdef_ipaddr.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8605cbf61cf30efa05ed1e6f1d20c976003ce4c6e651dd80fcecb43ae9c2814f",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr_dotdot.sh#1",
+      "slug": "usrdef-ipaddr-dotdot-sh-1",
+      "fixture": "usrdef_ipaddr_dotdot.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "221de811b3a08897fc6f783eeceea668a6e4f688eda20b022877fb039cbf94dd",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr_dotdot.sh#2",
+      "slug": "usrdef-ipaddr-dotdot-sh-2",
+      "fixture": "usrdef_ipaddr_dotdot.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "5e75598b63c362680d95ad5efaecc730c9120efd44b9ee3b425f45973fbd5f1a",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr_dotdot.sh#3",
+      "slug": "usrdef-ipaddr-dotdot-sh-3",
+      "fixture": "usrdef_ipaddr_dotdot.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "8605cbf61cf30efa05ed1e6f1d20c976003ce4c6e651dd80fcecb43ae9c2814f",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr_dotdot2.sh#1",
+      "slug": "usrdef-ipaddr-dotdot2-sh-1",
+      "fixture": "usrdef_ipaddr_dotdot2.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d5e0f5fe157d410269f1b2e8690bcb6da5c20852c2771e1f821f2e4cdc3af68c",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6",
+        "word"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr_dotdot2.sh#2",
+      "slug": "usrdef-ipaddr-dotdot2-sh-2",
+      "fixture": "usrdef_ipaddr_dotdot2.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "91059fa52ea51daebd5b55f4def20cc886a408d041d778f0b3d93f1526764f49",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6",
+        "word"
+      ]
+    },
+    {
+      "label": "usrdef_ipaddr_dotdot3.sh#1",
+      "slug": "usrdef-ipaddr-dotdot3-sh-1",
+      "fixture": "usrdef_ipaddr_dotdot3.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "d5e0f5fe157d410269f1b2e8690bcb6da5c20852c2771e1f821f2e4cdc3af68c",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6",
+        "number",
+        "word"
+      ],
+      "sets_explicit_priority": true
+    },
+    {
+      "label": "usrdef_ipaddr_dotdot3.sh#2",
+      "slug": "usrdef-ipaddr-dotdot3-sh-2",
+      "fixture": "usrdef_ipaddr_dotdot3.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "91059fa52ea51daebd5b55f4def20cc886a408d041d778f0b3d93f1526764f49",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6",
+        "number",
+        "word"
+      ],
+      "sets_explicit_priority": true
+    },
+    {
+      "label": "usrdef_ipaddr_dotdot3.sh#3",
+      "slug": "usrdef-ipaddr-dotdot3-sh-3",
+      "fixture": "usrdef_ipaddr_dotdot3.sh",
+      "case_number": 3,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "09442d7b42c78c85fb0029c76b302c3624819e4b17fcbde25a7c8a4fcb60c8ea",
+      "include_directives": [],
+      "motifs": [
+        "ipv4",
+        "ipv6",
+        "number",
+        "word"
+      ],
+      "sets_explicit_priority": true
+    },
+    {
+      "label": "usrdef_nested_segfault.sh#1",
+      "slug": "usrdef-nested-segfault-sh-1",
+      "fixture": "usrdef_nested_segfault.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "4871099e01fd3021685a66ded01697518738480922abe8b1e9cd3f1ba23085be",
+      "include_directives": [],
+      "motifs": []
+    },
+    {
+      "label": "usrdef_simple.sh#1",
+      "slug": "usrdef-simple-sh-1",
+      "fixture": "usrdef_simple.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "47bff71e34ef6b8f2125561ca8b3f2d1c3682f75b16c5885f530e2e1e698d1f7",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "usrdef_two.sh#1",
+      "slug": "usrdef-two-sh-1",
+      "fixture": "usrdef_two.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "47bff71e34ef6b8f2125561ca8b3f2d1c3682f75b16c5885f530e2e1e698d1f7",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "usrdef_two.sh#2",
+      "slug": "usrdef-two-sh-2",
+      "fixture": "usrdef_two.sh",
+      "case_number": 2,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "2662ae167e7e510a7dfb84edb1e4780a5e6a66f1914b078b691c9c74dd4c617f",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    },
+    {
+      "label": "usrdef_twotypes.sh#1",
+      "slug": "usrdef-twotypes-sh-1",
+      "fixture": "usrdef_twotypes.sh",
+      "case_number": 1,
+      "auxiliary_rulebases": [],
+      "cross_file_type_references": [],
+      "message_sha256": "47bff71e34ef6b8f2125561ca8b3f2d1c3682f75b16c5885f530e2e1e698d1f7",
+      "include_directives": [],
+      "motifs": [
+        "word"
+      ]
+    }
+  ],
+  "cases_with_include_directives": 3,
+  "auxiliary_rulebase_mechanism": "All auxiliary rulebases in this corpus are pulled in with an 'include=' directive, not with a cross-file custom '@type' reference. Zero cases reference a custom type defined in another file, so the cross-file type resolution path is UNCOVERED by the upstream corpus.",
+  "motif_coverage_note": "Counted as cases-containing-motif across both rulebase syntaxes: the JSON form (\"type\":\"x\") and the %name:type% shorthand. An earlier count that read only the JSON form undercounted badly - cisco-interface-spec appeared as 0 when it is 6.",
+  "cases_setting_explicit_priority": 6
+}

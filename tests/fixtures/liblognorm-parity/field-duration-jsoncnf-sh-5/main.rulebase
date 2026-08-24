@@ -1,0 +1,3 @@
+version=2
+rule=:duration %{"name":"field", "type":"duration"}% bytes
+rule=:duration %{"name":"field", "type":"duration"}%

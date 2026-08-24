@@ -1,0 +1,12 @@
+version=2
+rule=:a %{"name":"numbers", "type":"repeat",
+			"parser":[
+			  {"type":"number"},
+			  {"type":"literal", "text":":"},
+			  {"name":".", "type":"number"}
+			  ],
+			"while":[
+			  {"type":"literal", "text":", "}
+			]
+       		   }% b %w:word%
+

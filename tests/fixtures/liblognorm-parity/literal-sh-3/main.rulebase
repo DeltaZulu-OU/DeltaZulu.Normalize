@@ -1,0 +1,2 @@
+version=2
+rule=:Test %{"type":"literal", "text":"a", "name":"var"}% End

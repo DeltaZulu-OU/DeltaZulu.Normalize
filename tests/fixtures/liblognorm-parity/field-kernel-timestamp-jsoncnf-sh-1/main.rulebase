@@ -1,0 +1,2 @@
+version=2
+rule=:begin %{"name":"timestamp", "type":"kernel-timestamp"}% end

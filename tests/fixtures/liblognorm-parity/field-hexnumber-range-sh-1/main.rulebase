@@ -1,0 +1,2 @@
+version=2
+rule=:here is a number %num:hexnumber{"maxval":191}% in hex form

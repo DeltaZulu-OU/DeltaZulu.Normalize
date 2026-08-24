@@ -1,0 +1,1 @@
+CEF:0|V\endor|Product|Version|Signature ID|some name|Severity| name=value

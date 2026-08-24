@@ -1,0 +1,7 @@
+version=2
+type=@endpid:%{"type":"alternative","parser":[ {"type": "literal", "text":"]"},{"type": "literal", "text":"]:"} ] }%
+type=@AUTOTYPE1:%iface:char-to:/%/%ip:ipv4%(%port:number%)
+type=@AUTOTYPE1:%iface:char-to:\x3a%\x3a%ip:ipv4%/%port:number%
+type=@AUTOTYPE1:%iface:char-to:\x3a%\x3a%ip:ipv4%
+rule=:a pid[%pid:number%%-:@endpid% b
+rule=:a iface %.:@AUTOTYPE1% b

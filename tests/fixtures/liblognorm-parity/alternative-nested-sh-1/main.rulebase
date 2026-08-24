@@ -1,0 +1,12 @@
+version=2
+rule=:a %
+            {"type":"alternative",
+	     "parser": [
+	                [
+			  {"type":"number", "name":"num1"},
+			  {"type":"literal", "text":":"},
+			  {"type":"number", "name":"num"},
+			],
+			{"type":"hexnumber", "name":"hex"}
+		       ]
+	    }% b

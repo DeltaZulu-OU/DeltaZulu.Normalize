@@ -52,6 +52,11 @@ jobs:
           echo "package_version=$package_version" >> "$GITHUB_OUTPUT"
           echo "tag=v$package_version" >> "$GITHUB_OUTPUT"
 
+      - name: Verify the version moves forward
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: .github/scripts/verify-version-moves-forward.sh DeltaZulu.Parse "${{ steps.version.outputs.package_version }}"
+
       - name: Create release tag
         env:
           RELEASE_TAG: ${{ steps.version.outputs.tag }}
